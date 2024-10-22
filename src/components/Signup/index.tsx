@@ -1,13 +1,8 @@
-import * as S from './style';
+import * as S from './style'; // style 가져오기
 
 const Signup = () => {
   return (
     <S.Container>
-      <S.Label>로그인</S.Label>
-      <S.Input/>
-      <S.Label>비밀번호</S.Label>
-      <S.Input/>
-      <S.Submit>로그인</S.Submit>
     </S.Container>
   )
 }
