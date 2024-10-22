@@ -7,20 +7,15 @@
   top: 0; */
   background-color: #1B3DEA;
   width: 100%;
-  max-width: 360px;
+  max-width: 340px; /* padding으로 인해 양 옆 margin이 10px씩 늘었으므로 너비를 줄여줬습니다 */
   max-height: 47px;
   margin-left: auto;
   margin-right: auto;
-  z-index: 1000; /* 다른 요소 위에 표시되도록 합니다. */
    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 그림자 효과 */
   padding: 10px;  /* 여백 추가 */
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: space-between; /* 양쪽으로 정렬 */
-}
-
-.content {
-  margin-top: 47px; /* 고정 헤더 높이 만큼 여백을 추가하여 내용이 겹치지 않도록 합니다. */
 }
 
 .logo {

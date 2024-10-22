@@ -1,8 +1,13 @@
-import './style.css'
+import Header from '../../pages/Header'; // header import
+import * as S from './style'; // style 가져오기
 
 const License = () => {
   return (
-    <div></div>
+    <S.Body>
+      <Header></Header>
+      <S.Contents>
+      </S.Contents>
+    </S.Body>
   )
 }
 
