@@ -1,9 +1,16 @@
 .header {
-  position: fixed;
-  top: 0;         /* 상단에 위치시킵니다. */
-  left: 0;
-  right: 0;
+  width: 100%;
+}
+
+.header-2 {
+  /* position: fixed;
+  top: 0; */
   background-color: #1B3DEA;
+  width: 100%;
+  max-width: 360px;
+  max-height: 47px;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 1000; /* 다른 요소 위에 표시되도록 합니다. */
    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 그림자 효과 */
   padding: 10px;  /* 여백 추가 */
@@ -13,7 +20,7 @@
 }
 
 .content {
-  margin-top: 60px; /* 고정 헤더 높이 만큼 여백을 추가하여 내용이 겹치지 않도록 합니다. */
+  margin-top: 47px; /* 고정 헤더 높이 만큼 여백을 추가하여 내용이 겹치지 않도록 합니다. */
 }
 
 .logo {
@@ -23,17 +30,24 @@
 }
 
 .header-image {
-  height: 40px; /* 이미지의 높이를 설정합니다. 필요에 따라 조정하세요. */
+  height: 35px;
+  width: auto;
+  display: inline-block;
+}
+
+.left, .right {
+  height: 20px;
+  padding: 7.5px 10px;
 }
 
 .left {
-  margin-right: auto; /* 왼쪽 이미지는 자동 여백으로 밀어내기 */
+  margin-right: auto;
 }
 
 .center {
-  margin: 0 20px; /* 중앙 이미지는 좌우 여백 설정 */
+  margin: 0 20px;
 }
 
 .right {
-  margin-left: auto; /* 오른쪽 이미지는 자동 여백으로 밀어내기 */
+  margin-left: auto;
 }
