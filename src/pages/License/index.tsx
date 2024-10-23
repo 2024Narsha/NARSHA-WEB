@@ -1,13 +1,15 @@
 import Header from '../../components/Header/Header'; // header import
-import * as S from './style'; // style 가져오기
+import LicenseItem from '../../components/LicenseItem';
+import './style.css'
 
 const License = () => {
   return (
-    <S.Body>
+    <div className='container'>
       <Header></Header>
-      <S.Contents>
-      </S.Contents>
-    </S.Body>
+      <div className='contents'>
+        <LicenseItem />
+      </div>
+    </div>
   )
 }
 
