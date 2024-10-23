@@ -1,4 +1,4 @@
-import Header from '../../pages/Header'; // header import
+import Header from '../../components/Header/Header'; // header import
 import * as S from './style'; // style 가져오기
 
 const License = () => {

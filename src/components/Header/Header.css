@@ -3,8 +3,8 @@
 }
 
 .header-2 {
-  /* position: fixed;
-  top: 0; */
+  position: fixed;
+  /* top: 0; */
   background-color: #1B3DEA;
   width: 100%;
   max-width: 340px; /* padding으로 인해 양 옆 margin이 10px씩 늘었으므로 너비를 줄여줬습니다 */

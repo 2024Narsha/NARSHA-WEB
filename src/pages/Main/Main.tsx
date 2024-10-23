@@ -1,5 +1,5 @@
 import './Main.css';
-import Header from './Header'; // Header 컴포넌트를 임포트합니다.
+import Header from '../../components/Header/Header'; // Header 컴포넌트를 임포트합니다.
 
 const Main = () => {
   return (
