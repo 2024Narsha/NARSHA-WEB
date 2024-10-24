@@ -7,7 +7,7 @@ const License = () => {
     <div className='container'>
       <Header></Header>
       <div className='contents'>
-        <LicenseItem />
+        <LicenseItem/>
       </div>
     </div>
   )

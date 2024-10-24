@@ -1,11 +1,14 @@
 import './style.css'
 
 const LicenseItem = () => {
+  const LicenseName:string = '워드프로세서';
+  const subject:string = '공통';
+  const status:string = '나이스등재 불가';
   return (
     <div className='contentsBox'>
-      <div>워드프로세서</div>
-      <div className='subject'>공통</div>
-      <div className='status'>나이스 등재 가능</div>
+      <div>{LicenseName}</div>
+      <div className='subject'>{subject}</div>
+      <div className='status'>{status}</div>
     </div>
   )
 }
