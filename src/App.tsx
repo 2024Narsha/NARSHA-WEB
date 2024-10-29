@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
-import { dividerClasses } from "@mui/material";
 import WritePage from "./pages/contentWrite";
 
 const App = () => {
