@@ -33,8 +33,9 @@ const Write = () => {
         
       />
       
-      <label>교내 or 교외</label>
-      <select>
+      
+      <select title='교내 or 교외'>
+        <label>교내 or 교외</label>
         <option value="교내">교내</option>
         <option value="교외">교외</option>
       </select>
