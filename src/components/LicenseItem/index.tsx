@@ -5,7 +5,7 @@ const LicenseItem = () => {
   const subject:string = '공통';
   const status:string = '나이스등재 불가';
   return (
-    <div className='contentsBox'>
+    <div className='contents-box'>
       <div>{LicenseName}</div>
       <div className='subject'>{subject}</div>
       <div className='status'>{status}</div>
