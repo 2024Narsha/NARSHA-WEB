@@ -1,22 +1,19 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { TextField, MenuItem, Button, IconButton, Box, InputLabel, Select, FormControl } from '@mui/material';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { setDeadline } from './setDeadline';
+import Header from '../Header';
 
-// Form data types
-interface FormData {
-  title: string;
-  location: '교내' | '교외';
-  deadline: string;
-  content: string;
-  file: FileList; // FileList를 사용하여 파일 업로드 필드를 처리
-}
+const ContestWrite = () => {
 
-const Write = () => {
+  const [deadline, setDeadlineState] = useState("");
+
+  useEffect(() => {
+    // 기본 날짜를 설정
+    setDeadlineState(setDeadline("2024-10-12"));
+  }, []);
 
   return (
+  <div>
+  <Header />
   <div>
     <header>
       <button>
@@ -41,9 +38,14 @@ const Write = () => {
       </select>
 
       <div>
-        <label>신청마감일</label>
-        <input type="date" value="2024-10-12" />
-      </div>
+      <label htmlFor="deadline">신청 마감일</label>
+      <input 
+        id="deadline" 
+        type="date" 
+        value={deadline} 
+        onChange={(e) => setDeadlineState(e.target.value)} 
+      />
+    </div>
 
       <textarea
         placeholder="대회 내용을 입력해 주세요"
@@ -64,8 +66,8 @@ const Write = () => {
       </button>
     </form>
   </div>
-
+</div>
   );
 };
 
-export default Write;
+export default ContestWrite;
