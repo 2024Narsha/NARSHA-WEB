@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { setDeadline } from './setDeadline';
-import Header from '../Header';
+import Header from '../../components/Header/Header';
 
 const ContestWrite = () => {
 
