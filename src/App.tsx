@@ -3,6 +3,7 @@ import Main from "./pages/Main/Main";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import License from "./pages/License";
+import OptionBar from "./components/OptionBar";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/license" element={<License />} />
+        <Route path="/optionBar" element={<OptionBar />} />
       </Routes>
     </BrowserRouter>
   );

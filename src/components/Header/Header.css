@@ -11,7 +11,7 @@
   max-height: 47px;
   margin-left: auto;
   margin-right: auto;
-   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 그림자 효과 */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 그림자 효과 */
   padding: 10px;  /* 여백 추가 */
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
