@@ -11,7 +11,6 @@ const Header = () => {
           <img src = {`${process.env.PUBLIC_URL}/profile.svg`} alt="Profile" className="header-image right" />
         </div>
       </div>
-      {/* 네비게이션 메뉴를 추가할 수 있습니다. */}
     </header>
   );
 };
