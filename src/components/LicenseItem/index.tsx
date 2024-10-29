@@ -13,4 +13,4 @@ const LicenseItem = () => {
   )
 }
 
-export default LicenseItem
+export default LicenseItem;

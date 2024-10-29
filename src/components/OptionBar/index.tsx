@@ -17,4 +17,4 @@ const OptionBar = () => {
   )
 }
 
-export default OptionBar
+export default OptionBar;

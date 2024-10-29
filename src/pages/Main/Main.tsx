@@ -1,15 +1,14 @@
 import './Main.css';
 import Header from '../../components/Header/Header';
 import React, { useState, useEffect } from 'react';
-import noticeIcon from './path/to/your/icon.png'; // 올바른 경로로 변경하세요
 
 const NoticeBar = () => {
   const notices = [
-    '공지사항: 새로운 업데이트가 있습니다!',
-    '안내: 서비스 점검이 예정되어 있습니다.',
-    '대회알림: 사이버 영재교육 과정 수강생 모집기간이 13일 남았습니다'
+    <span key="1"><span className="notice-font-title">공지사항 </span> <span className="notice-font">18:00 ~ 20:00까지 점검이 예정되어 있습니다.</span></span>,
+    <span key="2"><span className="notice-font-title">안내 </span> <span className="notice-font">다음 주, 급식실 이벤트가 진행됩니다.</span></span>,
+    <span key="3"><span className="notice-font-title">알림 </span> <span className="notice-font">사이버 영재교육 과정 수강생 모집기간이 13일 남았습니다.</span></span>
   ];
-
+  
   const [currentNotice, setCurrentNotice] = useState(notices[0]);
   let noticeIndex = 0;
 
@@ -33,8 +32,8 @@ const NoticeBar = () => {
 const Main = () => {
   return (
     <div>
-      <Header /> {/* Header 컴포넌트를 포함시킵니다. */}
-      <NoticeBar /> {/* NoticeBar를 Header 아래에 추가합니다. */}
+      <Header />
+      <NoticeBar /> 
       <div className="content">
         <h2>Main page</h2>
         {/* 여기에 페이지의 내용을 추가합니다. */}

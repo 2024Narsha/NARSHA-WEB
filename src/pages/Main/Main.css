@@ -17,8 +17,8 @@
   color: black;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
-  justify-content: flex-start; /* 아이콘과 텍스트를 왼쪽으로 정렬 */
+  align-items: center;
+  justify-content: flex-start;
   padding: 0 10px; /* 양쪽 여백 */
   font-weight: bold;
   z-index: 1001; /* 헤더보다 위로 설정 */
@@ -26,21 +26,30 @@
 
 .notice-icon {
   width: 23px; /* 아이콘 크기 */
-  margin-right: 8px; /* 아이콘과 텍스트 사이 여백 */
+  margin-right: 10px; /* 아이콘과 텍스트 사이 여백 */
+  margin-left: 12px;
 }
 
 .notice-text {
-  margin-top: 3px; /* 텍스트 아래 여백 추가 (조정 필요) */
-}
-
-.notice-content {
-  flex-grow: 1; /* 남은 공간을 채워줌 */
-  white-space: nowrap; /* 줄바꿈을 하지 않음 */
+  margin-top: 3px;
+  white-space: nowrap;
   overflow: hidden; /* 넘치는 부분 숨김 */
   text-overflow: ellipsis; /* 넘치는 부분에 말줄임표 적용 */
-  display: block; /* 요소를 블록으로 변경하여 너비를 가질 수 있게 */
-  width: 100%; /* 전체 너비 사용 */
-  max-width: calc(100% - 50px); /* 아이콘 크기와 여백을 고려하여 최대 너비 설정 */
+  color: #888888;
+  max-width: calc(100% - 35px); /* 아이콘과 여백을 고려한 최대 너비 설정 */
+  flex-grow: 1; /* 남은 공간을 채우기 위해 성장하도록 설정 */
+}
+
+.notice-font-title {
+  color: #444444;
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.notice-font {
+  color: #888888;
+  font-weight: 450;
+  font-size: 14px;
 }
 
 .content {
