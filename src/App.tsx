@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import { dividerClasses } from "@mui/material";
-import WritePage from "./components/Write";
+import WritePage from "./pages/Write";
 
 const App = () => {
   return (

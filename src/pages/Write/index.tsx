@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { TextField, MenuItem, Button, IconButton, Box, InputLabel, Select, FormControl } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -15,62 +14,57 @@ interface FormData {
   file: FileList; // FileList를 사용하여 파일 업로드 필드를 처리
 }
 
-const WritePage = () => {
+const Write = () => {
 
   return (
-    <div >
-  <header>
-    <button>
-      <img src="path/to/arrow-back-icon.svg" alt="Back" />
-    </button>
-    <h2>글쓰기</h2>
-  </header>
+  <div>
+    <header>
+      <button>
+        <img src="path/to/arrow-back-icon.svg" alt="Back" />
+      </button>
+      <h2>글쓰기</h2>
+    </header>
 
-  <form>
-    <label>제목</label>
-    <input
-      type="text"
-      placeholder="제목을 입력해 주세요"
-      
-    />
-    
-    <label>교내 or 교외</label>
-    <select>
+    <form>
+      <label>제목</label>
+      <input
+        type="text"
+        placeholder="제목을 입력해 주세요"
         
+      />
+      
+      <label>교내 or 교외</label>
+      <select>
         <option value="교내">교내</option>
         <option value="교외">교외</option>
       </select>
 
-
-    <div>
+      <div>
         <label>신청마감일</label>
-      <input type="date" value="2024-10-12"/>
-    </div>
+        <input type="date" value="2024-10-12" />
+      </div>
+
+      <textarea
+        placeholder="대회 내용을 입력해 주세요"
+        rows={4}
+      />
 
 
-    <textarea
-      placeholder="대회 내용을 입력해 주세요"
-      rows={4}
-    
-    >
-    </textarea>
+      <div>
+        <button type="button">
+          첨부파일
+        </button>
+        <input type="file" hidden />
+      </div>
 
 
-    <div>
-      <button type="button">
-        첨부파일
+      <button type="submit">
+        게시
       </button>
-      <input type="file" hidden />
-    </div>
-
-
-    <button type="submit">
-      게시
-    </button>
-  </form>
-</div>
+    </form>
+  </div>
 
   );
 };
 
-export default WritePage;
+export default Write;
