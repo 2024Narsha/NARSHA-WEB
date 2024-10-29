@@ -1,0 +1,47 @@
+.header {
+  width: 100%;
+}
+
+.header-2 {
+  position: fixed;
+  /* top: 0; */
+  background-color: #1B3DEA;
+  width: 100%;
+  max-width: 360px;
+  max-height: 47px;
+  margin-left: auto;
+  margin-right: auto;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 그림자 효과 */
+  padding: 10px;  /* 여백 추가 */
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: space-between; /* 양쪽으로 정렬 */
+}
+
+.logo {
+  display: flex; /* 로고 컨테이너도 Flexbox로 설정 */
+  flex: 1; /* 로고 컨테이너가 가용 공간을 차지하도록 설정 */
+  justify-content: space-between; /* 자식 요소 간격을 최대화 */
+}
+
+.header-image {
+  height: 35px;
+  width: auto;
+  display: inline-block;
+}
+
+.left, .right {
+  padding: 7.5px 10px;
+}
+
+.left {
+  margin-right: auto;
+}
+
+.center {
+  margin: 0 20px;
+}
+
+.right {
+  margin-left: auto;
+}
