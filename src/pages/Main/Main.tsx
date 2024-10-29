@@ -1,5 +1,6 @@
 import './Main.css';
 import Header from '../../components/Header/Header';
+import Footer from '../../components/BottomBar/Footer';
 import React, { useState, useEffect } from 'react';
 
 const NoticeBar = () => {
@@ -38,6 +39,7 @@ const Main = () => {
         <h2>Main page</h2>
         {/* 여기에 페이지의 내용을 추가합니다. */}
       </div>
+      <Footer />
     </div>
   );
 };
