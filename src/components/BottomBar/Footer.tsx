@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
-import image1 from './path/to/image1.png'; // 실제 이미지 경로로 변경
-import image2 from './path/to/image2.png'; // 실제 이미지 경로로 변경
-import image3 from './path/to/image3.png'; // 실제 이미지 경로로 변경
-import image4 from './path/to/image4.png'; // 실제 이미지 경로로 변경
 
 const Footer = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const handleImageClick = (index: number) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <div className="footer">
       <div className="footer-images">
-      <img src={`${process.env.PUBLIC_URL}/contest.svg`} alt="대회" className="footer-icon" />
-        <img src={`${process.env.PUBLIC_URL}/certificate.svg`} alt="자격증" className="footer-icon" />
-        <img src={`${process.env.PUBLIC_URL}/service.svg`} alt="봉사활동" className="footer-icon large" />
-        <img src={`${process.env.PUBLIC_URL}/people.svg`} alt="학교생활" className="footer-icon" />
+        <img
+          src={`${process.env.PUBLIC_URL}/contest.svg`}
+          alt="대회"
+          className={`footer-icon ${selectedIndex === 0 ? 'selected' : ''}`}
+          onClick={() => handleImageClick(0)}
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/certificate.svg`}
+          alt="자격증"
+          className={`footer-icon ${selectedIndex === 1 ? 'selected' : ''}`}
+          onClick={() => handleImageClick(1)}
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/service.svg`}
+          alt="봉사활동"
+          className={`footer-icon large ${selectedIndex === 2 ? 'selected' : ''}`}
+          onClick={() => handleImageClick(2)}
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/people.svg`}
+          alt="학교생활"
+          className={`footer-icon ${selectedIndex === 3 ? 'selected' : ''}`}
+          onClick={() => handleImageClick(3)}
+        />
       </div>
     </div>
   );
