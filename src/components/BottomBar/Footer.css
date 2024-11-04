@@ -21,7 +21,7 @@
 
 .footer-icon {
   width: 32px;
-  transition: transform 0.2s, filter 0.2s;
+  transition: transform 0.2s;
   margin: 0 25px;
 }
 
@@ -29,17 +29,6 @@
   width: 36px;
 }
 
-.footer-icon.selected {
-  filter: brightness(0) saturate(100%) invert(32%) sepia(88%) saturate(410%) hue-rotate(190deg) brightness(100%) contrast(200%);
-  transform: translateY(-8px); /* 선택된 아이콘을 위로 이동 */
-}
-
-/* 아이콘 위에 마우스를 올렸을 때와 선택된 상태의 hover 효과를 분리 */
 .footer-icon:hover {
-  transform: translateY(-4px); /* hover 시 조금 덜 올라가게 수정 */
-}
-
-/* 선택된 상태에서는 hover 효과 제거 */
-.footer-icon.selected:hover {
-  transform: translateY(-8px); /* 선택된 아이콘은 항상 위로 이동 */
+  transform: translateY(-5px);
 }
