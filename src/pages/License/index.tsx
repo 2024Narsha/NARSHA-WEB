@@ -10,6 +10,12 @@ const License = () => {
       <OptionBar />
       <div className='contents'>
         <LicenseItem/>
+        <LicenseItem/>
+        <LicenseItem/>
+        <LicenseItem/>
+        <LicenseItem/>
+        <LicenseItem/>
+        <LicenseItem/>
       </div>
     </div>
   )
