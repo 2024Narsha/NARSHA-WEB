@@ -36,14 +36,17 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <NoticeBar /> 
+      <NoticeBar />
+      <div className='parent-container'> 
       <div className="content">
         <PreviewList />
         <p />
         <ContestView />
+        <p /><p /><p />
         {/* 여기에 페이지의 내용을 추가합니다. */}
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

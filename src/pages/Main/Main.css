@@ -22,6 +22,7 @@
   padding: 0 10px; /* 양쪽 여백 */
   font-weight: bold;
   z-index: 1001; /* 헤더보다 위로 설정 */
+  background-color: white;
 }
 
 .notice-icon {
@@ -53,10 +54,18 @@
 }
 
 .content {
-  margin-top: 97px; /* 헤더와 공지사항 높이를 반영한 여백 */
+  margin-top: 97px;
   padding: 10px;
+  height: calc(100vh - 147px);
 }
 
 .content p {
   height: 30px;
+}
+
+.parent-container {
+  display: flex; /* flexbox 사용 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  max-width: 360px;
 }
