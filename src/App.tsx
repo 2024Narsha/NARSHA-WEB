@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import License from "./pages/License";
 import OptionBar from "./components/OptionBar";
 import WritePage from "./pages/contentWrite";
+import PreviewList from "./components/PreviewList";
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/license" element={<License />} />
-        <Route path="/optionBar" element={<OptionBar />} />
+        
+        <Route path="/optionBar" element={<OptionBar />} /> {/* 이거 삭제해야 함 */}
+        <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
       </Routes>
     </BrowserRouter>
   );
