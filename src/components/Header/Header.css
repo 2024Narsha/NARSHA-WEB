@@ -1,5 +1,8 @@
 .header {
   width: 100%;
+  display: grid; /* grid 사용 */
+  height: 100vh; /* 화면 전체 높이를 사용 (선택적) */
+  justify-items: center; /* 수평 가운데 정렬 */
 }
 
 .header-2 {

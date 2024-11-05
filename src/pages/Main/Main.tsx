@@ -34,7 +34,7 @@ const NoticeBar = () => {
 
 const Main = () => {
   return (
-    <div>
+    <div className="centered-container">
       <Header />
       <NoticeBar />
       <div className='parent-container'> 

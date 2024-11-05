@@ -69,3 +69,9 @@
   align-items: center; /* 수직 가운데 정렬 */
   max-width: 360px;
 }
+
+.centered-container {
+  display: grid; /* grid 사용 */
+  place-items: center; /* 수평 및 수직 가운데 정렬 */
+  height: 100vh; /* 화면 전체 높이를 사용 (선택적) */
+}

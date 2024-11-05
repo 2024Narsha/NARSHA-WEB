@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const handleImageClick = (index: number) => {
     setSelectedIndex(index);
+
+    if (index === 0) {
+      navigate('/');
+    }
+
+    if (index === 1) {
+      navigate('/license');
+    }
   };
 
   return (
