@@ -1,0 +1,15 @@
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  border-bottom: 1px solid #ccc;
+  background-color: white; /* 배경색을 지정하여 스크롤 시 아래 컨텐츠와 겹치는 현상 방지 */
+  padding: 10px 0;
+  z-index: 1000; /* 다른 요소 위에 표시되도록 우선순위 설정 */
+  width: 360px;
+  height: 40px;
+  top: 0;
+  margin-top: 48px;
+}
