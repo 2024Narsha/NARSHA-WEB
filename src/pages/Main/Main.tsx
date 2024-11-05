@@ -2,6 +2,8 @@ import './Main.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/BottomBar/Footer';
 import React, { useState, useEffect } from 'react';
+import PreviewList from '../../components/PreviewList';
+import ContestView from '../../components/ContestView';
 
 const NoticeBar = () => {
   const notices = [
@@ -36,7 +38,9 @@ const Main = () => {
       <Header />
       <NoticeBar /> 
       <div className="content">
-        <h2>Main page</h2>
+        <PreviewList />
+        <p />
+        <ContestView />
         {/* 여기에 페이지의 내용을 추가합니다. */}
       </div>
       <Footer />

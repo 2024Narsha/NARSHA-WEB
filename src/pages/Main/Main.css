@@ -56,3 +56,7 @@
   margin-top: 97px; /* 헤더와 공지사항 높이를 반영한 여백 */
   padding: 10px;
 }
+
+.content p {
+  height: 30px;
+}

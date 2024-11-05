@@ -1,0 +1,18 @@
+/* 기존 CSS 내용 유지 */
+
+/* 필요에 따라 추가적인 스타일 조정 */
+.post-list-container {
+  display: flex;
+  flex-direction: column; /* 열 방향으로 배치 */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 320px;
+  height: 280px;
+  overflow-x: scroll; /* 가로 스크롤 활성화 */
+}
+
+.post-preview-container {
+  max-width: 150px;
+  height: auto; /* 높이를 자동으로 조정 */
+  margin: 0 20px 10px 0; /* 아래 여백 추가 */
+}

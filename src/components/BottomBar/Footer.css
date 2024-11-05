@@ -11,6 +11,7 @@
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: space-around;
   z-index: 1000; /* 다른 요소 위에 표시 */
+  background-color: white;
 }
 
 .footer-icons {
@@ -34,12 +35,10 @@
   transform: translateY(-8px); /* 선택된 아이콘을 위로 이동 */
 }
 
-/* 아이콘 위에 마우스를 올렸을 때와 선택된 상태의 hover 효과를 분리 */
 .footer-icon:hover {
-  transform: translateY(-4px); /* hover 시 조금 덜 올라가게 수정 */
+  transform: translateY(-4px);
 }
 
-/* 선택된 상태에서는 hover 효과 제거 */
 .footer-icon.selected:hover {
-  transform: translateY(-8px); /* 선택된 아이콘은 항상 위로 이동 */
+  transform: translateY(-8px);
 }
