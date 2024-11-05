@@ -7,16 +7,6 @@ h2 {
   margin: auto;
 }
 
-/* 헤더 스타일 */
-.tab-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-bottom: 1px solid #ccc;
-  margin-top: 48px;
-  padding: 10px 0;
-}
 
 .back-button {
   position: absolute;
@@ -121,6 +111,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   outline: none; /* 선택 시 파란 테두리 제거 */
   transition: border-color 0.3s;
   background-color: transparent;
+  margin-top: -10px;
 }
 
 .title-input::placeholder {
@@ -147,4 +138,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .margin-left{
   margin-left: 20px;
+}
+
+.margin-top{
+  margin-top: 87px;
+}
+
+.margin-top2{
+  margin-top: 10px;
+  font-size: large;
+}
+
+.header-container {
+  margin: 0; /* Header에 여백 제거 */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* label과 input 사이 간격 */
+  margin-bottom: 10px; /* input 그룹 간 간격 */
 }
