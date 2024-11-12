@@ -14,7 +14,10 @@ const ContestWrite = () => {
 }, []);
 
   return (
-    <div className='container'>
+    <body>
+      
+    
+    <div className='centered-container'>
         <Header />
         <TabBar />
       <div className="container margin-top">
@@ -38,7 +41,7 @@ const ContestWrite = () => {
 
           <div className='form-group'>
           <label htmlFor="location" className='margin-left'>정기대회 유무</label>
-          <select id="location" className='margin' title="정기대회 유무 선택">
+          <select id="location" className='margin border' title="정기대회 유무 선택">
             <option value="해당사항 없음">해당사항 없음</option>
             <option value="정기대회">정기대회</option>
           </select>
@@ -47,7 +50,7 @@ const ContestWrite = () => {
           {/* 교내 or 교외 선택 */}
           <div className='form-group'>
           <label htmlFor="location" className='margin-left'>교내 or 교외</label>
-          <select id="location" className='margin' title="교내 or 교외 선택">
+          <select id="location" className='margin border' title="교내 or 교외 선택">
             <option value="교내">교내</option>
             <option value="교외">교외</option>
           </select>
@@ -55,7 +58,7 @@ const ContestWrite = () => {
 
           <div className='form-group'>
           <label htmlFor="location" className='margin-left'>대회 분야</label>
-          <select id="location" className='margin' title="대회 분야 선택">
+          <select id="location" className='margin border' title="대회 분야 선택">
             <option value="공통">공통</option>
             <option value="교외">정보보안</option>
             <option value="아이디어톤">아이디어톤</option>
@@ -68,7 +71,7 @@ const ContestWrite = () => {
           <label htmlFor="deadline" className='margin-left'>신청 마감일</label>
           <input
             id="deadline"
-            className='margin'
+            className='margin border'
             type="date"
             value={deadline}
             onChange={(e) => setDeadlineState(e.target.value)}
@@ -80,7 +83,7 @@ const ContestWrite = () => {
           <label htmlFor="content" className='margin-left'>본문</label>
           <textarea
             id="content"
-            className='margin textarea'
+            className='margin textarea border'
             placeholder="대회 내용을 입력해 주세요"
             rows={4}
           />
@@ -101,6 +104,7 @@ const ContestWrite = () => {
       </div>
       <Footer />
     </div>
+    </body>
   );
 };
 
