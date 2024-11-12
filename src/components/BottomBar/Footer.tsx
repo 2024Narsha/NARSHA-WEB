@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(0); // 초기값을 0으로 설정
   const navigate = useNavigate();
 
   const handleImageClick = (index: number) => {
