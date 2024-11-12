@@ -1,6 +1,6 @@
 import './Main.css';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/BottomBar/Footer';
+import Footer from '../../components/Footer/Footer';
 import React, { useState, useEffect } from 'react';
 import PreviewList from '../../components/PreviewList';
 import ContestView from '../../components/ContestView';

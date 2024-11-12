@@ -18,18 +18,19 @@ body{
   }
 }
 
-.container {
+.license-container {
   max-width: 360px;
   height: 100%;
   margin: 0 auto;
   background-color: #FCFCFC;
 }
 
-.contents {
+.license-contents {
   max-width: 360px;
-  height: 80vh;
+  min-height: 100vh;
   overflow-y: scroll;
   margin: 0 auto;
-  padding: 30px 20px 0 20px;
+  margin-top: 47px;
+  padding: 120px 20px 0 20px;
   background-color: white;
 }

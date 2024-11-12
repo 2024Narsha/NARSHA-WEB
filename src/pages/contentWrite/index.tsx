@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { setDeadline } from './setDeadline';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/BottomBar/Footer';
+import Footer from '../../components/Footer/Footer';
 import TabBar from './tab-bar'
 import Button from './button';
 import './index.css';

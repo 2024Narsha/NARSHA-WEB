@@ -62,22 +62,38 @@
   height: 60px;
   background-color: white;
   border: 1px solid #888888;
+  margin: 20px 0;
+  padding: 0 26px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .attribute {
-  width: 108px;
+  width: 50%;
   height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
 }
 
+.attribute-title {
+  font-size: 10px;
+  color: #888888;
+}
 
+.attribute p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #444444;
+}
 
 .split-line {
   width: 1px;
   height: 30px;
   background-color: #888888;
+  margin: 0 26px;
 }
 
 .post-detail-text {
