@@ -22,25 +22,25 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-images">
         <img
-          src={`${process.env.PUBLIC_URL}/contest.svg`}
+          src={`/contest.svg`}
           alt="대회"
           className={`footer-icon ${selectedIndex === 0 ? 'selected' : ''}`}
           onClick={() => handleImageClick(0)}
         />
         <img
-          src={`${process.env.PUBLIC_URL}/certificate.svg`}
+          src={`/certificate.svg`}
           alt="자격증"
           className={`footer-icon ${selectedIndex === 1 ? 'selected' : ''}`}
           onClick={() => handleImageClick(1)}
         />
         <img
-          src={`${process.env.PUBLIC_URL}/service.svg`}
+          src={`/service.svg`}
           alt="봉사활동"
           className={`footer-icon large ${selectedIndex === 2 ? 'selected' : ''}`}
           onClick={() => handleImageClick(2)}
         />
         <img
-          src={`${process.env.PUBLIC_URL}/people.svg`}
+          src={`/people.svg`}
           alt="학교생활"
           className={`footer-icon ${selectedIndex === 3 ? 'selected' : ''}`}
           onClick={() => handleImageClick(3)}

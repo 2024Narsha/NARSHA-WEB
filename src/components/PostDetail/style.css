@@ -11,14 +11,79 @@
   box-sizing: border-box;
 }
 
-.container {
+.post-detail-container {
   max-width: 360px;
-  height: 90vh;
+  height: auto;
   margin: 0 auto;
   background-color: #FCFCFC;
   position: relative; /* bottom bottom 배치 떄문에 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.post-detail-img-wrap {
-  
+.post-detail-img-wrap { 
+  max-width: 320px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.post-detail-deadline {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 37px;
+  height: 20px;
+  background-color: #1B3DEA;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-detail-img-wrap img {
+  width: 320px;
+  height: 200px;
+}
+
+.post-detail-title {
+  width: 320px;
+  height: auto;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.post-attribute-wrap {
+  width: 320px;
+  height: 60px;
+  background-color: white;
+  border: 1px solid #888888;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attribute {
+  width: 108px;
+  height: 30px;
+}
+
+
+
+.split-line {
+  width: 1px;
+  height: 30px;
+  background-color: #888888;
+}
+
+.post-detail-text {
+  width: 320px;
+  height: auto;
+  color: #444444;
+  font-size: 16px;
+  font-weight: 400;
 }

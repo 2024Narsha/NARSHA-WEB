@@ -26,7 +26,7 @@ const NoticeBar = () => {
 
   return (
     <div className="notice-bar">
-      <img src={`${process.env.PUBLIC_URL}/Announ.png`} alt="공지 아이콘" className="notice-icon" />
+      <img src={`/Announ.png`} alt="공지 아이콘" className="notice-icon" />
       <div className="notice-text">{currentNotice}</div>
     </div>
   );
