@@ -112,7 +112,7 @@ input[type="date"]::-webkit-inner-spin-button,
   outline: none; /* 선택 시 파란 테두리 제거 */
   transition: border-color 0.3s;
   background-color: transparent;
-  font-size: 10px;
+  font-size: 12px;
 
 }
 
