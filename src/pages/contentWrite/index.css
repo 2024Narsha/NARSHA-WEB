@@ -5,8 +5,10 @@ h2 {
 
 .container {
   margin: auto;
-}
+  width: 360px;
+  height: 1000px;
 
+}
 
 .back-button {
   position: absolute;
@@ -34,14 +36,6 @@ h2 {
   color: #333;
 }
 
-.input {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
 /* 날짜 입력과 캘린더 버튼 컨테이너 */
 .date-input-container {
   display: flex;
@@ -62,6 +56,11 @@ h2 {
 /* 본문 텍스트 에어리어 */
 .textarea {
   resize: none;
+}
+
+.textarea:focus{
+  border: 1px solid black;
+  outline: none;
 }
 
 /* 파일 업로드 버튼 */
@@ -85,21 +84,8 @@ h2 {
   margin-right: 8px;
 }
 
-/* 제출 버튼 */
-.submit-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background: url(../../image/ico_calendar.svg) no-repeat;
+  background: url(../../../public/ico_calendar.svg) no-repeat;
 }
 
 .title-input {
@@ -111,7 +97,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   outline: none; /* 선택 시 파란 테두리 제거 */
   transition: border-color 0.3s;
   background-color: transparent;
-  margin-top: -10px;
+  font-size: 10px;
+
 }
 
 .title-input::placeholder {
@@ -145,8 +132,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .margin-top2{
-  margin-top: 10px;
-  font-size: large;
+  margin-top: 20px;
 }
 
 .header-container {
@@ -158,4 +144,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   gap: 5px; /* label과 input 사이 간격 */
   margin-bottom: 10px; /* input 그룹 간 간격 */
+}
+
+.add-image{
+  width: 60px;
+  height: 60px;
 }
