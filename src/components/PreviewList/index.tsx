@@ -8,7 +8,7 @@ const Preview = () => {
   return (
     <div className='post-preview-container'>
       <div className='preview-img-box'>
-        <div className='preview-img'><img src={`${process.env.PUBLIC_URL}/kaist.png`} /></div>
+        <div className='preview-img'><img src={`/kaist.png`} /></div>
         <div className='deadline-box'>{deadline}</div>
       </div>
 

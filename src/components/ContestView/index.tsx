@@ -8,7 +8,7 @@ const ContestPreview = () => {
     <div className='post-preview-container'>
       <div className='preview-img-box'>
         <div className='preview-img'>
-          <img src={`${process.env.PUBLIC_URL}/kaist.png`} alt="Contest" />
+          <img src={`/kaist.png`} alt="Contest" />
         </div>
         <div className='deadline-box'>{deadline}</div>
       </div>
