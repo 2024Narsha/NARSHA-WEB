@@ -1,0 +1,33 @@
+.Search {
+  position: fixed;
+  top: 47px;
+  left: 0;
+  right: 0;
+  width: 360px;
+  height: 40px;
+  color: black;
+  border-bottom: 0.5px solid #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-weight: 400;
+  z-index: 1001;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.search-icon-left {
+  width: 10px;
+  margin: 0 10px;
+}
+
+.search-icon-right {
+  width: 20px;
+  margin: 0 10px;
+}
+
+.search-text {
+  flex-grow: 1;
+  text-align: center;
+}
