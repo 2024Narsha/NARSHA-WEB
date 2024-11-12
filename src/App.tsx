@@ -8,6 +8,7 @@ import WritePage from "./pages/contentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';
+import CategoryResults from "./pages/CategoryResults/CategoryResults";
 
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/license" element={<License />} />
         <Route path="/category" element={<CategoryList />} />
-        
+        <Route path="/category-results" element={<CategoryResults />} />
+
         <Route path="/optionBar" element={<OptionBar />} /> {/* 이거 삭제해야 함 */}
         <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
         <Route path="/postDetail" element={<PostDetail />} /> {/* 이거 삭제해야 함 */}
