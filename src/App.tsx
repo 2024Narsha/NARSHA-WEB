@@ -7,6 +7,8 @@ import OptionBar from "./components/OptionBar";
 import WritePage from "./pages/contentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
+import CategoryList from './pages/CategoryList/CategoryList';
+
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/license" element={<License />} />
+        <Route path="/category" element={<CategoryList />} />
         
         <Route path="/optionBar" element={<OptionBar />} /> {/* 이거 삭제해야 함 */}
         <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
