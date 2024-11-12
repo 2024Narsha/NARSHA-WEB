@@ -1,0 +1,25 @@
+.top-bar-container {
+  width: 100%;
+  height: 40px;
+  margin: 47px 0 0 0;
+  background-color: white;
+  border-bottom: 0.5px solid #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.top-bar-container img {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 12px;
+  left: 20px;
+}
+
+.top-bar-title {
+  font-size: 15px;
+  color: #444444;
+  font-weight: 500;
+}

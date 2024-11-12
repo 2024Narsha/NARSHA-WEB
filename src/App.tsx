@@ -6,6 +6,7 @@ import License from "./pages/License";
 import OptionBar from "./components/OptionBar";
 import WritePage from "./pages/contentWrite";
 import PreviewList from "./components/PreviewList";
+import PostDetail from "./components/PostDetail";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         
         <Route path="/optionBar" element={<OptionBar />} /> {/* 이거 삭제해야 함 */}
         <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
+        <Route path="/postDetail" element={<PostDetail />} /> {/* 이거 삭제해야 함 */}
       </Routes>
     </BrowserRouter>
   );
