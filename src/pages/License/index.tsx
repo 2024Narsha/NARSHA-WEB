@@ -5,10 +5,10 @@ import './style.css'
 
 const License = () => {
   return (
-    <div className='container'>
+    <div className='license-container'>
       <Header></Header>
       <OptionBar />
-      <div className='contents'>
+      <div className='license-contents'>
         <LicenseItem/>
         <LicenseItem/>
         <LicenseItem/>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/BottomBar/Footer';
-import './CategoryList.css';
+import Footer from '../../components/Footer/Footer';
+import './CategoryList.css'
 
 const CategorySearch = () => {
   return (

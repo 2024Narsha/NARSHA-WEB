@@ -2,6 +2,7 @@ import './style.css'
 import BottomButton from "../BottomButton";
 import Header from "../Header/Header";
 import TopBar from "../TopBar";
+import Footer from '../Footer/Footer';
 
 const PostDetail = () => {
 
@@ -21,12 +22,12 @@ const PostDetail = () => {
 
       <div className='post-attribute-wrap'>
         <div className='attribute'>
-          <h2>신청 기한</h2>
+          <p className='attribute-title' >신청 기한</p>
           <p>2024.09.23 ~ 10.18</p>
         </div>
         <div className='split-line'></div>
         <div className='attribute'>
-          <h2>교내 / 교외</h2>
+          <p className='attribute-title' >교내 / 교외</p>
           <p>교외 대회</p>
         </div>
       </div>
@@ -42,6 +43,7 @@ const PostDetail = () => {
       </div>
 
       <BottomButton />
+      <Footer />
     </div>
   )
 }
