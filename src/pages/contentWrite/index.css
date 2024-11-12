@@ -12,7 +12,8 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 360px;
+  width: 360px;
+  margin: auto;
 }
 
 .container {

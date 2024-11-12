@@ -20,7 +20,7 @@ const ContestWrite = () => {
     <div className='centered-container'>
         <Header />
         <TabBar />
-      <div className="container margin-top">
+      <div className="container">
         
           <button title='이미지 삽입' className='add-image margin-left margin-top2'>
             <img src="public/ico_calendar.svg" alt="이미지 삽입 아이콘" />
