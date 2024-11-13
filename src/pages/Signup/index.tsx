@@ -1,27 +1,15 @@
 import { Link } from 'react-router-dom';
 import './style.css'
+import BottomButton from '../../components/BottomButton';
 
 const Signup = () => {
   return (
-    <>
-      <>
-        <>회원가입</>
-        <>수상한 고래를 이용하기 전,</>
-        <>회원가입이 필요해요.</>
+    <div>
+      <div top></div>
 
-        <>
-        <>아이디</>
-        <></>
-        <>비밀번호</>
-        <></>
-        <>비밀번호 확인</>
-        <></>
-        </>
-        <>이미 계정이 있나요?</><Link to='/login'>로그인</Link>
-        
-        <>가입하기</>
-      </>
-    </>
+      <>이미 계정이 있나요?</><Link to='/login'>로그인</Link>
+      <BottomButton title='가입하기' />
+    </div>
   )
 }
 

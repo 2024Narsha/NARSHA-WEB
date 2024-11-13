@@ -1,17 +1,20 @@
 import "./style.css"
 
-const OptionBar = () => {
+interface OptionBar {
+  title:string
+  loption:string
+  roption:string
+}
 
-  const title:string = '자격증 추천'
-  const stayingOption:string = '교내' // 현재 머물고 있는 옵션
-  const notStayingOption:string = '교외' // 현재 머물고 있지 않은 옵션
+const OptionBar = (props:OptionBar) => {
+  const { title, loption, roption } = props;
 
   return (
     <div className='option-bar-container'>
       <div className='option-bar-title'>{title}</div>
       <div className='option-wrap'>
-        <div className='option' id="stayingOption">{stayingOption}</div>
-        <div className='option'>{notStayingOption}</div>
+        <div className='option' id="staying">{loption}</div>
+        <div className='option'>{roption}</div>
       </div>
     </div>
   )

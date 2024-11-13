@@ -25,10 +25,8 @@ const App = () => {
         <Route path="/license" element={<License />} />
         <Route path="/category" element={<CategoryList />} />
         <Route path="/category-results" element={<CategoryResults />} />
+        <Route path="/postDetail" element={<PostDetail />} />
 
-        <Route path="/optionBar" element={<OptionBar />} /> {/* 이거 삭제해야 함 */}
-        <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
-        <Route path="/postDetail" element={<PostDetail />} /> {/* 이거 삭제해야 함 */}
         <Route path="/startPage" element={<StartPage />} /> {/* 이거 삭제해야 함 */}
       </Routes>
     </BrowserRouter>
