@@ -1,10 +1,16 @@
 import './style.css'
 
-const TopBar = () => {
+interface propsType {
+  title:string;
+}
+
+const TopBar = (props:propsType) => {
+  const { title } = props;
+
   return (
     <div className='top-bar-container'>
       <img src={`/arrow.png`}></img>
-      <div className='top-bar-title'>대회본문</div>
+      <div className='top-bar-title'>{title}</div>
     </div>
   )
 }

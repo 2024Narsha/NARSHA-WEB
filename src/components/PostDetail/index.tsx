@@ -11,7 +11,7 @@ const PostDetail = () => {
   return (
     <div className="post-detail-container">
       <Header />
-      <TopBar />
+      <TopBar title='대회본문'/>
 
       <div className='post-detail-img-wrap'>
         <div className='post-detail-deadline'>D-13</div>
@@ -42,7 +42,7 @@ const PostDetail = () => {
         - 기타사항 : 첨부된 공모전 포스터 내용 참조
       </div>
 
-      <BottomButton />
+      <BottomButton title = '시작하기'/>
       <Footer />
     </div>
   )

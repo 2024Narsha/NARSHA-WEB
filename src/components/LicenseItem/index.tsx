@@ -1,12 +1,17 @@
 import './style.css'
 
-const LicenseItem = () => {
-  const LicenseName:string = '워드프로세서';
-  const subject:string = '공통';
-  const status:string = '나이스등재 불가';
+interface LicenseItem {
+  licenseName:string;
+  subject:string;
+  status:string;
+}
+
+const LicenseItem = (props:LicenseItem) => {
+  const { licenseName, subject, status } = props;
+
   return (
     <div className='contents-box'>
-      <div>{LicenseName}</div>
+      <div>{licenseName}</div>
       <div className='subject'>{subject}</div>
       <div className='status'>{status}</div>
     </div>
