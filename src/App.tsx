@@ -9,6 +9,7 @@ import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';
 import CategoryResults from "./pages/CategoryResults/CategoryResults";
+import StartPage from "./pages/StartPage";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/optionBar" element={<OptionBar />} /> {/* 이거 삭제해야 함 */}
         <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
         <Route path="/postDetail" element={<PostDetail />} /> {/* 이거 삭제해야 함 */}
+        <Route path="/startPage" element={<StartPage />} /> {/* 이거 삭제해야 함 */}
       </Routes>
     </BrowserRouter>
   );
