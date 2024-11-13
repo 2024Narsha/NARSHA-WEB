@@ -1,3 +1,4 @@
+import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header'; // header import
 import LicenseItem from '../../components/LicenseItem';
 import OptionBar from '../../components/OptionBar';
@@ -17,6 +18,8 @@ const License = () => {
         <LicenseItem/>
         <LicenseItem/>
       </div>
+
+      <Footer />
     </div>
   )
 }

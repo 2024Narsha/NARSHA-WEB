@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/BottomBar/Footer';
+import Footer from '../../components/Footer/Footer';
 import './CategoryResults.css';
 
 const CategoryResults = () => {
