@@ -14,7 +14,7 @@ const Signup = () => {
         회원가입이 필요해요.
       </div>
 
-      <div className='input-box-wrap'>
+      <div className='signup-input-box-wrap'>
         <InputBox label='아이디' placeholder='아이디 입력' />
         <InputBox label='비밀번호' placeholder='비밀번호 입력' />
         <InputBox label='비밀번호 확인' placeholder='비밀번호 확인' />

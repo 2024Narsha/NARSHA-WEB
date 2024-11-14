@@ -38,7 +38,7 @@
 
 .signup-page-title {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 500;
   color: #444444;
   position: absolute;
   top: 209px;
@@ -53,7 +53,7 @@
   top: 249px;
 }
 
-.input-box-wrap {
+.signup-input-box-wrap {
   max-width: 287px;
   height: 260px;
   position: absolute;

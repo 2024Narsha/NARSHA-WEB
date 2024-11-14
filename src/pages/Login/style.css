@@ -38,7 +38,7 @@
 
 .login-page-title {
   width: 128px;
-  height: 43px;
+  height: 40px;
   position: absolute;
   top: 199px;
 }
@@ -52,7 +52,7 @@
   top: 248px;
 }
 
-.input-box-wrap {
+.login-input-box-wrap {
   max-width: 287px;
   height: 176px;
   position: absolute;
