@@ -3,7 +3,6 @@ import Main from "./pages/Main/Main";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import License from "./pages/License";
-import OptionBar from "./components/OptionBar";
 import WritePage from "./pages/contentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
@@ -25,9 +24,10 @@ const App = () => {
         <Route path="/license" element={<License />} />
         <Route path="/category" element={<CategoryList />} />
         <Route path="/category-results" element={<CategoryResults />} />
-        <Route path="/postDetail" element={<PostDetail />} />
+        <Route path="/post-detail" element={<PostDetail />} />
+        <Route path="/start-page" element={<StartPage />} />
 
-        <Route path="/startPage" element={<StartPage />} /> {/* 이거 삭제해야 함 */}
+        <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
       </Routes>
     </BrowserRouter>
   );
