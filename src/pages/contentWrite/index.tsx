@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent, useRef} from 'react';
 import { setDeadline } from './setDeadline';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -8,13 +8,33 @@ import './index.css';
 
 const ContestWrite = () => {
   const [deadline, setDeadlineState] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
+
+  const fileRef = useRef<HTMLInputElement|null>(null);
+
+  const openFileSelector = () => {
+    if(fileRef.current) {
+      fileRef.current.click();
+    }
+  }
 
   useEffect(() => {
     setDeadlineState(setDeadline());
-}, []);
+  }, []);
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      setFiles(prev=>[...prev, file]);
+    }
+  };
+
+  const deleteFile = (e: File) => {
+    setFiles(prev=>prev.filter(item=>(item.lastModified.toString()+item.name != e.lastModified.toString()+item.name)));
+  }
+
 
   return (
-    <body>
       
     
     <div className='centered-container'>
@@ -91,12 +111,29 @@ const ContestWrite = () => {
 
           {/* 첨부파일 */}
           <div className="file-upload">
-            <label htmlFor="file" >첨부파일</label>
-            <button type="button">
-              파일 선택
-            </button>
-            <input type="file" id="file" hidden />
+            <div onClick={openFileSelector} id='fileSelectButton'>
+              <img src="/file.svg" alt="" />
+              <p>파일선택</p>
+            </div>
+            <input type="file" id="file" hidden onChange={handleFileChange} ref={fileRef}/>
           </div>
+
+          <div id='fileWrap'>
+            {
+              files.map((item)=>(
+                <div className='fileItem'>
+                  <div>
+                    <p>{item.name}</p>
+                    <p>{Math.floor(item.size / (1024))}MB</p>
+                  </div>
+                  <div onClick={()=>deleteFile(item)}>
+                    <img src='/deleteFile.svg' alt=''/>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+          <div id='spacer'></div>
 
           {/* 게시 버튼 */}
           <Button/>
@@ -104,7 +141,6 @@ const ContestWrite = () => {
       </div>
       <Footer />
     </div>
-    </body>
   );
 };
 

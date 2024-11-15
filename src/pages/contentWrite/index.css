@@ -10,19 +10,17 @@ body{
 .centered-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 360px;
+  padding-top: 88px; /* 상단 여백을 패딩으로 설정 */
   margin: auto;
 }
 
 .container {
-  position: fixed;
-  margin: auto;
   width: 360px;
-  height: 100vh;
-  top: 88px;
-  background-color: none;
+  margin: 0 auto;
+  padding: 20px 0 100px 0; /* 상하단 여백 추가 */
+  overflow-y: auto; /* 컨테이너 내부에 스크롤 활성화 */
 }
 
 .back-button {
@@ -44,6 +42,7 @@ body{
   flex-direction: column;
   gap: 15px;
   margin-top: 20px;
+  height: 120vh;
 }
 
 .label {
@@ -94,6 +93,31 @@ body{
 
 .file-upload-button img {
   margin-right: 8px;
+}
+
+#id {
+  display: none;
+}
+
+#fileSelectButton {
+  background-color: transparent;
+  width: 240px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-left: 12px;
+  & > p {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  & > img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -171,4 +195,55 @@ input[type="date"]::-webkit-inner-spin-button,
 select{
   height: 30px;
   padding-left: 5px;
+}
+
+#fileWrap {
+  width: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.fileItem {
+  width: 100%;
+  height: 64px;
+  background-color: #F1F1F1;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  & > div:first-child {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    & > p:first-child {
+      font-size: 16px;
+      font-family: 600;
+    }
+    & > p:last-child {
+      font-size: 12px;
+      font-family: 400;
+      color: gray;
+    }
+  }
+  & > div:last-child {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      object-position: center;
+      transform: rotateX(45deg);
+    }
+  }
+}
+
+#spacer {
+  height: 200px;
 }

@@ -9,7 +9,7 @@ const TopBar = (props:propsType) => {
 
   return (
     <div className='top-bar-container'>
-      <img src={`/arrow.png`}></img>
+      <img src={`/arrow.png`} alt='뒤로가기'/>
       <div className='top-bar-title'>{title}</div>
     </div>
   )
