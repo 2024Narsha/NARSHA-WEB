@@ -1,10 +1,10 @@
 import './style.css'
 
-interface propsType {
+interface TopBar {
   title:string;
 }
 
-const TopBar = (props:propsType) => {
+const TopBar = (props:TopBar) => {
   const { title } = props;
 
   return (
