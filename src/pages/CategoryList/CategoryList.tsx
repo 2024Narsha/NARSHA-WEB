@@ -32,6 +32,9 @@ const CategoryList = () => {
   return (
     <div className='centered-container'>
       <CategorySearch />
+
+      <h2 className="category-title">대회 분야</h2>
+      
       <div className="category-buttons">
         {['공통', '정보 보안', '아이디어톤', '게임', '해커톤', '프로그래밍', '머신러닝', '로봇', '웹 개발', '앱 개발', 'IoT', '블록체인', '데이터 분석', '디자인', '빅데이터', '컴퓨터 비전', '소프트웨어 설계', '클라우드 개발', '오픈소스', '창업'].map((category) => (
           <button
