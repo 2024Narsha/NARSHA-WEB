@@ -11,25 +11,15 @@
   box-sizing: border-box;
 }
 
-body{
-  -ms-overflow-style: none; // 스크롤바 없애기
-  &::-webkit-scrollbar{
-    display: none
-  }
-}
-
-.license-container {
+.apply-page-container {
   max-width: 360px;
   height: 100vh;
   margin: 0 auto;
-  background-color: #FCFCFC;
+  background-color: #F2F2F2;
 }
 
-.license-contents {
-  max-width: 360px;
+.apply-content {
+  width: 100%;
   height: 100%;
-  overflow-y: scroll;
-  margin: 0 auto;
   padding: 167px 20px 0 20px;
-  background-color: white;
 }

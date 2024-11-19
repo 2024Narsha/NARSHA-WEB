@@ -7,7 +7,7 @@ import './style.css'
 const License = () => {
   return (
     <div className='license-container'>
-      <Header></Header>
+      <Header />
       <OptionBar 
         title='자격증 추천'
         loption='교내'
