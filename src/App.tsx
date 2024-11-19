@@ -14,28 +14,45 @@ import ApplyPage from "./pages/ApplyPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { Outlet } from "react-router-dom";
+import SongApply from "./pages/SongApply";
+import StoryApply from "./pages/StoryApply";
+
+const Wrapper = () => {
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
+      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/contests" element={<div>test 12234</div>} />
-        <Route path="/contests/:id" element={<div>test 12234</div>} />
-        <Route path="/contests/write" element={<WritePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/license" element={<License />} />
-        <Route path="/category" element={<CategoryList />} />
-        <Route path="/category-results" element={<CategoryResults />} />
-        <Route path="/post-detail" element={<PostDetail />} />
+        <Route path="/" element={<Wrapper />}>
+          <Route path="/" element={<Main />} />
+          <Route path="/contests" element={<div>test 12234</div>} />
+          <Route path="/contests/:id" element={<div>test 12234</div>} />
+          <Route path="/contests/write" element={<WritePage />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/license" element={<License />} />
+          <Route path="/category" element={<CategoryList />} />
+          <Route path="/category-results" element={<CategoryResults />} />
+          <Route path="/post-detail" element={<PostDetail />} />
+          <Route path="/apply-page" element={<ApplyPage />} />
+          <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
+
+          <Route path="/song-apply" element={<SongApply />} />
+          <Route path="/story-apply" element={<StoryApply />} />
+        </Route>
+
         <Route path="/start-page" element={<StartPage />} />
-        <Route path="/" element={<Outlet />} />
-        <Route path="/apply-page" element={<ApplyPage />} />
-        <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
