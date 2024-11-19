@@ -10,10 +10,14 @@ import CategoryList from './pages/CategoryList/CategoryList';
 import CategoryResults from "./pages/CategoryResults/CategoryResults";
 import StartPage from "./pages/StartPage";
 
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/contests" element={<div>test 12234</div>} />
@@ -26,9 +30,9 @@ const App = () => {
         <Route path="/category-results" element={<CategoryResults />} />
         <Route path="/post-detail" element={<PostDetail />} />
         <Route path="/start-page" element={<StartPage />} />
-
-        <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
+        <Route path="/" element={<Outlet />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

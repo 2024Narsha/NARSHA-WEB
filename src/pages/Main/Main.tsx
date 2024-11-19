@@ -35,7 +35,6 @@ const NoticeBar = () => {
 const Main = () => {
   return (
     <div className="centered-container">
-      <Header />
       <NoticeBar />
       <div className='parent-container'> 
       <div className="content">
@@ -45,7 +44,6 @@ const Main = () => {
         <p /><p /><p />
         {/* 여기에 페이지의 내용을 추가합니다. */}
       </div>
-      <Footer />
     </div>
     </div>
   );

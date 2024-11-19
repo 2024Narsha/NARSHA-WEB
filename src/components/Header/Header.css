@@ -1,30 +1,25 @@
-.header {
-  width: 360px;
-  display: grid; /* grid 사용 */
-  height: 47px; /* 화면 전체 높이를 사용 (선택적) */
-  justify-items: center; /* 수평 가운데 정렬 */
-}
-
 .header-2 {
   position: fixed;
-  /* top: 0; */
   background-color: #1B3DEA;
   width: 100%;
-  max-width: 360px;
-  max-height: 47px;
-  margin-left: auto;
-  margin-right: auto;
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 그림자 효과 */
+  max-width: 360px;  /* 최대 너비를 360px로 설정 */
+  height: 47px; /* 높이 설정 */
+  margin-left: auto;  /* 좌측 여백을 자동으로 설정 */
+  margin-right: auto; /* 우측 여백을 자동으로 설정 */
   padding: 10px;  /* 여백 추가 */
   display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
-  justify-content: space-between; /* 양쪽으로 정렬 */
+  align-items: center;  /* 수직 중앙 정렬 */
+  justify-content: space-between;  /* 양쪽으로 정렬 */
+  top: 0;  /* 화면 최상단에 고정 */
+  left: 0;  /* 왼쪽에 고정 */
+  right: 0;  /* 오른쪽에 고정 */
+  z-index: 1000;  /* 헤더가 다른 콘텐츠 위에 오도록 z-index 설정 */
 }
 
 .logo {
-  display: flex; /* 로고 컨테이너도 Flexbox로 설정 */
-  flex: 1; /* 로고 컨테이너가 가용 공간을 차지하도록 설정 */
-  justify-content: space-between; /* 자식 요소 간격을 최대화 */
+  display: flex;
+  flex: 1;  /* 로고 컨테이너가 가용 공간을 차지하도록 설정 */
+  justify-content: space-between;  /* 자식 요소 간격을 최대화 */
 }
 
 .header-image {

@@ -34,7 +34,6 @@ const CategoryList = () => {
 
   return (
     <div className='centered-container'>
-      <Header />
       <CategorySearch />
 
       {/* 카테고리 선택 버튼들 */}
@@ -54,8 +53,6 @@ const CategoryList = () => {
       <button className="search-button" onClick={handleSearchClick}>
         검색하기
       </button>
-
-      <Footer />
     </div>
   );
 };
