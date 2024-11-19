@@ -10,6 +10,7 @@ import CategoryList from './pages/CategoryList/CategoryList';
 import CategoryResults from "./pages/CategoryResults/CategoryResults";
 import StartPage from "./pages/StartPage";
 import ApplyPage from "./pages/ApplyPage";
+import Volunteer from './pages/Volunteer/volunteer';
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/license" element={<License />} />
+          <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/category" element={<CategoryList />} />
           <Route path="/category-results" element={<CategoryResults />} />
           <Route path="/post-detail" element={<PostDetail />} />

@@ -7,6 +7,7 @@ const Footer = () => {
 
   const isHome = useMatch('/');
   const isLicense = useMatch('/license');
+  const isVolunteer = useMatch('/volunteer');  // 봉사활동 경로 확인
 
   const handleImageClick = (path: string) => {
     if (path) {
@@ -32,8 +33,8 @@ const Footer = () => {
         <img
           src={`/service.svg`}
           alt="봉사활동"
-          className={`footer-icon large`}
-          onClick={() => {}}
+          className={`footer-icon ${isVolunteer ? 'selected' : ''} large`}  // 봉사활동 경로 매칭 후 selected 추가
+          onClick={() => handleImageClick('/volunteer')}
         />
         <img
           src={`/people.svg`}
