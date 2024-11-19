@@ -1,9 +1,9 @@
 .centered-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 위쪽 정렬 */
+  justify-content: flex-start;
   align-items: center;
-  min-height: 100vh; /* 최소 화면 높이 */
+  min-height: 100vh;
   padding-top: 100px; /* Search 바 아래 여백 추가 */
 }
 
@@ -39,24 +39,26 @@
 .category-buttons {
   display: flex;
   flex-wrap: wrap; /* 버튼들이 줄바꿈되도록 설정 */
-  justify-content: flex-start; /* 버튼들을 왼쪽으로 정렬 */
-  gap: 10px; /* 버튼들 간의 간격 설정 */
+  justify-content: flex-start;
+  gap: 10px;
   width: 100%;
-  padding: 0 10px; /* 카테고리 버튼들의 양옆 여백 */
+  padding: 0 10px;
 }
 
 .category-button {
-  padding: 16px;
+  padding: 16px 16px 14px;
   font-size: 16px;
   height: 30px;
-  border-radius: 30px; /* 테두리 곡선 크기 변경 */
-  background-color: #f0f0f0;
+  border-radius: 30px;
   border: 1px solid #ccc;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  background-color: white;
+  line-height: 30px;
+  color: #888888;
 }
 
 .category-button.selected {
@@ -73,17 +75,17 @@
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  position: fixed; /* 고정된 위치 */
-  bottom: 85px; /* 화면 하단에서 20px 떨어지게 설정 */
-  left: 50%; /* 수평 중앙에 배치 */
-  transform: translateX(-50%); /* 수평 중앙 정렬을 위한 보정 */
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .category-title {
   margin-top: 30px;
   margin-left: 25px;
   font-size: 25px;
-  font-weight: 550;
+  font-weight: 600;
   color: #333;
   margin-bottom: 12px;
   text-align: left;
