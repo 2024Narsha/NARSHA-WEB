@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 import ApplyDetail from "./components/ApplyDetail";
 import SongApply from "./pages/SongApply";
+import StoryApply from "./pages/StoryApply";
 
 const Wrapper = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/apply-page" element={<ApplyPage />} />
           <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
           <Route path="/song-apply" element={<SongApply />} />
+          <Route path="/story-apply" element={<StoryApply />} />
 
         </Route>
 
