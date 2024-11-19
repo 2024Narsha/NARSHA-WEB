@@ -9,6 +9,7 @@ import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';
 import CategoryResults from "./pages/CategoryResults/CategoryResults";
 import StartPage from "./pages/StartPage";
+import ApplyPage from "./pages/ApplyPage";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -31,6 +32,8 @@ const App = () => {
         <Route path="/post-detail" element={<PostDetail />} />
         <Route path="/start-page" element={<StartPage />} />
         <Route path="/" element={<Outlet />} />
+        <Route path="/apply-page" element={<ApplyPage />} />
+        <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
       </Routes>
       <Footer />
     </BrowserRouter>
