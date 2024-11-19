@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate, useMatch } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // 초기값을 null로 설정
   const navigate = useNavigate();
 
-  const handleImageClick = (index: number) => {
-    setSelectedIndex(index);
+  const isHome = useMatch('/');
+  const isLicense = useMatch('/license');
 
-    if (index === 0) {
-      navigate('/');
-    } else if (index === 1) {
-      navigate('/license');
-    } else if (index === 2) {
-
-    } else if (index === 3) {
-      
+  const handleImageClick = (path: string) => {
+    if (path) {
+      navigate(path);
     }
   };
 
@@ -26,26 +20,26 @@ const Footer = () => {
         <img
           src={`/contest.svg`}
           alt="대회"
-          className={`footer-icon ${selectedIndex === 0 ? 'selected' : ''}`}
-          onClick={() => handleImageClick(0)}
+          className={`footer-icon ${isHome ? 'selected' : ''}`}
+          onClick={() => handleImageClick('/')}
         />
         <img
           src={`/certificate.svg`}
           alt="자격증"
-          className={`footer-icon ${selectedIndex === 1 ? 'selected' : ''}`}
-          onClick={() => handleImageClick(1)}
+          className={`footer-icon ${isLicense ? 'selected' : ''}`}
+          onClick={() => handleImageClick('/license')}
         />
         <img
           src={`/service.svg`}
           alt="봉사활동"
-          className={`footer-icon large ${selectedIndex === 2 ? 'selected' : ''}`}
-          onClick={() => handleImageClick(2)}
+          className={`footer-icon large`}
+          onClick={() => {}}
         />
         <img
           src={`/people.svg`}
           alt="학교생활"
-          className={`footer-icon ${selectedIndex === 3 ? 'selected' : ''}`}
-          onClick={() => handleImageClick(3)}
+          className={`footer-icon`}
+          onClick={() => {}}
         />
       </div>
     </div>
