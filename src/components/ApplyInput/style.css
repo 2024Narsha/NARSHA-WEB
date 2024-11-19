@@ -29,9 +29,9 @@
   height: 34px;
   padding: 10px 12px;
   border: 0.5px solid #dddddd;
+  font-size: 12px;
 }
 
 .apply-input-box::placeholder {
   color: #dddddd;
-  font-size: 12px;
 }
