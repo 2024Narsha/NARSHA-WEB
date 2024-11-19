@@ -19,7 +19,7 @@ body{
 .container {
   width: 360px;
   margin: 0 auto;
-  padding: 20px 0 100px 0; /* 상하단 여백 추가 */
+  padding: 20px 0 0px 0; /* 상하단 여백 추가 */
   overflow-y: auto; /* 컨테이너 내부에 스크롤 활성화 */
 }
 

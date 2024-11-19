@@ -136,7 +136,7 @@ const ContestWrite = () => {
           <div id='spacer'></div>
 
           {/* 게시 버튼 */}
-          <Button/>
+          <Button onClick={() => console.log("버튼 클릭")}>게시</Button>
         </form>
       </div>
       <Footer />
