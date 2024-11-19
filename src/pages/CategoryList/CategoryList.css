@@ -36,20 +36,22 @@
 }
 
 .category-buttons {
-  margin-top: 60px;
+  margin-top: -60px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;  /* 버튼들이 줄바꿈되도록 설정 */
+  justify-content: center;  /* 버튼들을 가로로 중앙 정렬 */
+  gap: 10px;  /* 버튼들 간의 간격 설정 */
+  width: 100%;
 }
 
 .category-button {
   padding: 10px 20px;
-  margin: 5px;
   font-size: 16px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px;
+  white-space: nowrap;
 }
 
 .category-button.selected {
@@ -60,10 +62,15 @@
 
 .search-button {
   padding: 10px 20px;
+  width: 250px;
+  height: 40px;
   background-color: #1B3DEA;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
+  border-radius: 10px;
+  position: fixed;  /* 고정된 위치 */
+  bottom: 85px;  /* 화면 하단에서 20px 떨어지게 설정 */
+  left: 50%;  /* 수평 중앙에 배치 */
+  transform: translateX(-50%);  /* 수평 중앙 정렬을 위한 보정 */
 }
