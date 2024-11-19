@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(0); // 초기값을 0으로 설정
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // 초기값을 null로 설정
   const navigate = useNavigate();
 
   const handleImageClick = (index: number) => {
@@ -11,10 +11,12 @@ const Footer = () => {
 
     if (index === 0) {
       navigate('/');
-    }
-
-    if (index === 1) {
+    } else if (index === 1) {
       navigate('/license');
+    } else if (index === 2) {
+
+    } else if (index === 3) {
+      
     }
   };
 

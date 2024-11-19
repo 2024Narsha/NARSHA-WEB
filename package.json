@@ -21,10 +21,10 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-  "start": "vite",
-  "dev": "vite",
-  "build": "tsc && vite build",
-  "serve": "vite preview"
+    "start": "vite",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
   },
   "eslintConfig": {
     "extends": [
