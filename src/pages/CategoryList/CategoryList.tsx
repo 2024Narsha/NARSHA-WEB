@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 import './CategoryList.css'
 
 const CategorySearch = () => {
@@ -23,7 +21,6 @@ const CategoryList = () => {
     setSelectedCategory(category);
   };
 
-  // 검색하기 버튼 클릭 시 해당 카테고리 페이지로 이동
   const handleSearchClick = () => {
     if (!selectedCategory) {
       alert('카테고리를 선택해주세요');
@@ -35,10 +32,8 @@ const CategoryList = () => {
   return (
     <div className='centered-container'>
       <CategorySearch />
-
-      {/* 카테고리 선택 버튼들 */}
       <div className="category-buttons">
-        {['카테고리 1', '카테고리 2', '카테고리 3'].map((category) => (
+        {['공통', '정보 보안', '아이디어톤', '게임', '해커톤', '프로그래밍', '머신러닝', '로봇', '웹 개발', '앱 개발', 'IoT', '블록체인', '데이터 분석', '디자인', '빅데이터', '컴퓨터 비전', '소프트웨어 설계', '클라우드 개발', '오픈소스', '창업'].map((category) => (
           <button
             key={category}
             className={`category-button ${selectedCategory === category ? 'selected' : ''}`}
