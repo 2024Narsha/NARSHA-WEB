@@ -35,10 +35,7 @@ const ContestWrite = () => {
 
 
   return (
-      
-    
     <div className='centered-container'>
-        <Header />
         <TabBar />
       <div className="container">
         
@@ -139,7 +136,6 @@ const ContestWrite = () => {
           <Button onClick={() => console.log("버튼 클릭")}>게시</Button>
         </form>
       </div>
-      <Footer />
     </div>
   );
 };

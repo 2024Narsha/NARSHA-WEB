@@ -1,14 +1,11 @@
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import TopBar from "../../components/TopBar";
 import Button from "./Button";
 
 const LicenseWrite = () => {
   return(
     <div className='centered-container'>
-    <Header />
     <TopBar title="자격증 글쓰기"/>
-  <div className="container">
+    <div className="container">
     
       <button title='이미지 삽입' className='add-image margin-left margin-top2'>
         <img src="public/ico_calendar.svg" alt="이미지 삽입 아이콘" />
@@ -57,7 +54,6 @@ const LicenseWrite = () => {
       <Button onClick={() => console.log("버튼 클릭")}>게시</Button>
     </form>
   </div>
-  <Footer />
 </div>
   );
 }
