@@ -18,6 +18,8 @@ import { Outlet } from "react-router-dom";
 import ApplyDetail from "./components/ApplyDetail";
 import SongApply from "./pages/SongApply";
 import StoryApply from "./pages/StoryApply";
+import Students from "./pages/Studenets";
+import StudentsPostDetail from "./pages/StudentsPostDetail";
 
 const Wrapper = () => {
   return (
@@ -50,6 +52,8 @@ const App = () => {
           <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
           <Route path="/song-apply" element={<SongApply />} />
           <Route path="/story-apply" element={<StoryApply />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/students-post-detail" element={<StudentsPostDetail />} />
 
         </Route>
 
