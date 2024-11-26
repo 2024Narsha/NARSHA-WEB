@@ -1,45 +1,43 @@
 /* 카테고리 버튼 컨테이너 */
-.category-buttons-container {
+.category-button-v-container {
+  position: sticky;
+  top: 145px;
+  z-index: 100; /* 다른 요소 위에 표시 */
   margin: 0;
   display: flex;
   gap: 10px;
-}
-
-.margin {
-  margin-top: 190px;
-}
-/* 카테고리 버튼 */
-.category-button {
-  padding: 8px 14px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+  padding: 7px; /* 내부 여백 */
+  padding-left: 13px;
   background-color: white;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
+.volunteer-container {
+  max-width: 360px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #F2F2F2;
+}
 
-/* 카테고리 버튼 컨테이너 */
-.category-buttons-container {
-  display: flex;
-  gap: 10px;
+.license-contents {
+  max-width: 360px;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 /* 카테고리 버튼 */
-.category-button {
-  margin-top: 155px;
-  margin-bottom: 10px;
-  padding: 10px 12px;
+.category-button-v {
+  max-width: 360px;
+  padding: 6px 13px 5px;
   border: 1px solid #888888;
   border-radius: 20px;
   background-color: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   color: #444444;
 }
 
-.category-button.selected {
+.category-button-v.selected {
   background-color: #545B82;
   color: white;
   border-color: #545B82;
