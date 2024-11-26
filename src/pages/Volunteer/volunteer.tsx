@@ -13,7 +13,7 @@ const Volunteer: React.FC = () => {
   return (
     <div className="volunteer-container">
       {/* OptionBar: 헤더 고정 */}
-      <div style={{ position: 'sticky', top: 0, zIndex: 110, backgroundColor: 'white' }}>
+      <div className="option-bar-wrapper">
         <OptionBar 
           title="봉사활동 조회"
           loption="평일"
@@ -37,7 +37,7 @@ const Volunteer: React.FC = () => {
       </div>
 
       {/* VolunteerItem 리스트 */}
-      <div className='VolunteerItem'>
+      <div className="volunteer-items-list">
         <VolunteerItem
           title="급식도우미 추가모집"
           previewContent={`현재 카테고리: ${selectedCategory}`}
@@ -47,7 +47,7 @@ const Volunteer: React.FC = () => {
         <VolunteerItem
           title="입학설명회 도우미"
           previewContent={`현재 카테고리: ${selectedCategory}`}
-      />
+        />
       </div>
     </div>
   );
