@@ -20,6 +20,7 @@ import SongApply from "./pages/SongApply";
 import StoryApply from "./pages/StoryApply";
 import Students from "./pages/Studenets";
 import StudentsPostDetail from "./pages/StudentsPostDetail";
+import LicenseWrite from "./pages/LicenseWrite";
 
 const Wrapper = () => {
   return (
@@ -54,7 +55,7 @@ const App = () => {
           <Route path="/story-apply" element={<StoryApply />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students-post-detail" element={<StudentsPostDetail />} />
-
+          <Route path="/license/write" element={<LicenseWrite/>}/>
         </Route>
 
         <Route path="/start-page" element={<StartPage />} />
