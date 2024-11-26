@@ -3,7 +3,7 @@ import Main from "./pages/Main/Main";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import License from "./pages/License";
-import WritePage from "./pages/contentWrite";
+import WritePage from "./pages/ContentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';
@@ -20,6 +20,8 @@ import SongApply from "./pages/SongApply";
 import StoryApply from "./pages/StoryApply";
 import Students from "./pages/Studenets";
 import StudentsPostDetail from "./pages/StudentsPostDetail";
+import LicenseWrite from "./pages/LicenseWrite";
+
 
 const Wrapper = () => {
   return (
@@ -54,6 +56,7 @@ const App = () => {
           <Route path="/story-apply" element={<StoryApply />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students-post-detail" element={<StudentsPostDetail />} />
+          <Route path="/license/write" element={<LicenseWrite/>}/>
 
         </Route>
 
