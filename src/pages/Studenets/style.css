@@ -11,12 +11,19 @@
   box-sizing: border-box;
 }
 
-.story-apply-container {
+.students-page-container {
   max-width: 360px;
   height: 100vh;
-  margin: auto;
+  margin: 0 auto;
+  background-color: #F2F2F2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F2F2F2;
+}
+
+.students-content-wrap {
+  width: 320px;
+  height: 100%;
+  padding: 147px 0 85px 0;
+  overflow-y: scroll;
 }

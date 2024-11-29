@@ -3,7 +3,7 @@ import Main from "./pages/Main/Main";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import License from "./pages/License";
-import WritePage from "./pages/contentWrite";
+import WritePage from "./pages/ContentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';
@@ -11,13 +11,18 @@ import CategoryResults from "./pages/CategoryResults/CategoryResults";
 import StartPage from "./pages/StartPage";
 import ApplyPage from "./pages/ApplyPage";
 import Volunteer from './pages/Volunteer/volunteer';
+import VolunterWrite from "./pages/VolunterWrite";
 
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { Outlet } from "react-router-dom";
+import ApplyDetail from "./components/ApplyDetail";
 import SongApply from "./pages/SongApply";
 import StoryApply from "./pages/StoryApply";
-import VolunterWrite from "./pages/VolunterWrite";
+import Students from "./pages/Studenets";
+import StudentsPostDetail from "./pages/StudentsPostDetail";
+import LicenseWrite from "./pages/LicenseWrite";
+
 
 const Wrapper = () => {
   return (
@@ -49,9 +54,12 @@ const App = () => {
           <Route path="/apply-page" element={<ApplyPage />} />
           <Route path="/volunter-write" element={<VolunterWrite/>}/>
           <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
-
           <Route path="/song-apply" element={<SongApply />} />
           <Route path="/story-apply" element={<StoryApply />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/students-post-detail" element={<StudentsPostDetail />} />
+          <Route path="/license/write" element={<LicenseWrite/>}/>
+
         </Route>
 
         <Route path="/start-page" element={<StartPage />} />

@@ -11,27 +11,20 @@
   box-sizing: border-box;
 }
 
-.apply-input-wrap {
-  width: 284px;
-  height: 57px;
+.apply-detail-box {
+  width: 320px;
+  height: 270px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 22px 18px 30px 18px;
+  margin: 107px 0 0 0;
 }
 
-.apply-input-label {
-  font-size: 14px;
-  color: #444444;
-}
-
-.apply-input-box {
-  width: 100%;
-  height: 34px;
-  padding: 10px 12px;
-  border: 0.5px solid #dddddd;
-  font-size: 12px;
-}
-
-.apply-input-box::placeholder {
-  color: #dddddd;
+.apply-detail-wrap {
+  display: flex;
+  justify-content: space-between;
 }

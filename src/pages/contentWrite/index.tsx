@@ -1,8 +1,6 @@
 import React, { useEffect, useState, ChangeEvent, useRef} from 'react';
 import { setDeadline } from './setDeadline';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import TabBar from './tab-bar'
+import TopBar from '../../components/TopBar';
 import Button from './button';
 import './index.css';
 
@@ -35,11 +33,8 @@ const ContestWrite = () => {
 
 
   return (
-      
-    
     <div className='centered-container'>
-        <Header />
-        <TabBar />
+      <TopBar title="대회 글쓰기"/>
       <div className="container">
         
           <button title='이미지 삽입' className='add-image margin-left margin-top2'>
@@ -136,10 +131,10 @@ const ContestWrite = () => {
           <div id='spacer'></div>
 
           {/* 게시 버튼 */}
-          <Button/>
+          <Button onClick={() => console.log("버튼 클릭")}>게시</Button>
         </form>
       </div>
-      <Footer />
+
     </div>
   );
 };

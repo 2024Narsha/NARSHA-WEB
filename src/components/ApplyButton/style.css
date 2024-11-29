@@ -11,12 +11,13 @@
   box-sizing: border-box;
 }
 
-.story-apply-container {
-  max-width: 360px;
-  height: 100vh;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #F2F2F2;
+.apply-button {
+  width: 60px;
+  height: 24px;
+  text-align: center;
+  background-color: white;
+  color: #1B3DEA;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 0.5px solid #1B3DEA;
 }
