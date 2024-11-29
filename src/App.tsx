@@ -11,10 +11,11 @@ import CategoryResults from "./pages/CategoryResults/CategoryResults";
 import StartPage from "./pages/StartPage";
 import ApplyPage from "./pages/ApplyPage";
 import Volunteer from './pages/Volunteer/volunteer';
+import VolunterWrite from "./pages/VolunterWrite";
 
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { Outlet } from "react-router-dom";
 import ApplyDetail from "./components/ApplyDetail";
 import SongApply from "./pages/SongApply";
 import StoryApply from "./pages/StoryApply";
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/category-results" element={<CategoryResults />} />
           <Route path="/post-detail" element={<PostDetail />} />
           <Route path="/apply-page" element={<ApplyPage />} />
+          <Route path="/volunter-write" element={<VolunterWrite/>}/>
           <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
           <Route path="/song-apply" element={<SongApply />} />
           <Route path="/story-apply" element={<StoryApply />} />
