@@ -16,7 +16,7 @@ import VolunterWrite from "./pages/VolunterWrite";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import ApplyDetail from "./components/ApplyDetail";
+
 import SongApply from "./pages/SongApply";
 import StoryApply from "./pages/StoryApply";
 import Students from "./pages/Studenets";
@@ -44,8 +44,7 @@ const App = () => {
           <Route path="/contests" element={<div>test 12234</div>} />
           <Route path="/contests/:id" element={<div>test 12234</div>} />
           <Route path="/contests/write" element={<WritePage />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+
           <Route path="/license" element={<License />} />
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/category" element={<CategoryList />} />
@@ -63,6 +62,8 @@ const App = () => {
         </Route>
 
         <Route path="/start-page" element={<StartPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

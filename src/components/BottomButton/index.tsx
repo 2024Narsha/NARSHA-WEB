@@ -2,14 +2,15 @@ import './style.css'
 
 interface BottomButton {
   title:string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const BottomButton = (props:BottomButton) => {
-  const { title } = props;
+  const { title, onClick } = props;
 
   return (
     <div className="back-blur">
-      <button className="bottom-button">{title}</button>
+      <button className="bottom-button" onClick={onClick}>{title}</button>
     </div>
   )
 }

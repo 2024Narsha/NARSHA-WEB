@@ -68,3 +68,24 @@
   color: #3F4142;
   text-align: right;
 }
+
+.label {
+  font-size: 16;
+  font-weight: 500;
+  color: #444444;
+  margin: 0 0 4px 1px;
+}
+
+.input-box {
+  width: 287px;
+  height: 45px;
+  border-radius: 5px;
+  border: 1px solid #888888;
+  padding-left: 18px;
+  font-size: 16px;
+}
+
+.input-box::placeholder {
+  color: #D0d0d0;
+  font-weight: 400;
+}
