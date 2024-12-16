@@ -41,7 +41,7 @@ const ContestWrite = () => {
             <img src="public/ico_calendar.svg" alt="이미지 삽입 아이콘" />
           </button>
 
-        <form className="form">
+        <div className="form">
 
           {/* 제목 입력 */}
           <div className='form-group'>
@@ -132,7 +132,7 @@ const ContestWrite = () => {
 
           {/* 게시 버튼 */}
           <Button onClick={() => console.log("버튼 클릭")}>게시</Button>
-        </form>
+        </div>
       </div>
 
     </div>
