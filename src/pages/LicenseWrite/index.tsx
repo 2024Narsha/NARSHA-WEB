@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import TopBar from "../../components/TopBar";
-import { Button, Box, Option, Div, Select } from "./WriteStyle";
+import { Button, Box, Option, Div, Select, Input, Label } from "./WriteStyle";
 import axios from "axios";
 
 const LicenseWrite = () => {
   const accessToken = localStorage.getItem('accessToken');
+  const [school,setSchool] = useState("true")
   const [title, setTitle] = useState('');
-  const [niceAccept, setNiceAccept] = useState('가능');
+  const [niceAccept, setNiceAccept] = useState("true");
   const [subject, setSubject] = useState('프로그래밍');
 
   const handleTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+  }
+
+  const handleSchool = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSchool(e.target.value)
   }
 
   const handleNiceAcceept = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -22,8 +27,16 @@ const LicenseWrite = () => {
   }
 
   const uploadLicense = async () => {
+    const formData = {
+      title,
+      school,
+      niceAccept,
+      subject
+    };
+
     try{
-      const res = await axios.post("https://2024-narsha.hw0k.me/")
+      const res = await axios.post("https://2024-narsha.hw0k.me/licenses", formData)
+      console.log("Response:", res.data);
     }catch{
 
     }
@@ -35,27 +48,35 @@ const LicenseWrite = () => {
       <Box var="container">
         <Div>
           <Box var="form-group">
-            <label htmlFor="title" className='margin-left'>제목</label>
-            <input
+            <Label htmlFor="title" className='margin-left'>제목</Label>
+            <Input
               type="text"
               id="title"
               placeholder="제목을 입력해 주세요"
-              className='title-input margin'
               onChange={handleTitle}
               value={title}
+              var="title"  
             />
           </Box>
 
           <Box var="form-group">
-            <label htmlFor="location" className='margin-left'>나이스등재 가능 여부</label>
+          <Label htmlFor="location" className='margin-left'>교내 or 교외</Label>
+          <Select id="location" title="교내 or 교외 선택" onChange={handleSchool}>
+            <Option value="true">교내</Option>
+            <Option value="false">교외</Option>
+          </Select>
+          </Box>
+
+          <Box var="form-group">
+            <Label htmlFor="location" className='margin-left'>나이스등재 가능 여부</Label>
             <Select id="location" title="나이스등재 가능 여부" onChange={handleNiceAcceept}>
-              <Option value="가능">가능</Option>
-              <Option value="불가">불가</Option>
+              <Option value="true">가능</Option>
+              <Option value="false">불가</Option>
             </Select>
           </Box>
 
           <Box var="form-group">
-            <label htmlFor="location" className='margin-left'>해당 분야</label>
+            <Label htmlFor="location" className='margin-left'>해당 분야</Label>
             <Select id="location" title="나이스등재 가능 여부" onChange={handleSubject}>
               <Option value="프로그래밍">프로그래밍</Option>
               <Option value="데이터베이스">데이터베이스</Option>
@@ -66,7 +87,7 @@ const LicenseWrite = () => {
             </Select>
           </Box>
           <Box var="submit">
-            <Button var="submit" onClick={() => console.log("버튼 클릭")}>게시</Button>
+            <Button var="submit" onClick={uploadLicense}>게시</Button>
           </Box>
         </Div>
       </Box>
