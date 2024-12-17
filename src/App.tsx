@@ -3,7 +3,7 @@ import Main from "./pages/Main/Main";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import License from "./pages/License";
-import WritePage from "./pages/ContentWrite";
+import WritePage from "./pages/contentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';
@@ -41,8 +41,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Wrapper />}>
           <Route path="/" element={<Main />} />
-          <Route path="/contests" element={<div>test 12234</div>} />
-          <Route path="/contests/:id" element={<div>test 12234</div>} />
+
           <Route path="/contests/write" element={<WritePage />} />
 
           <Route path="/license" element={<License />} />

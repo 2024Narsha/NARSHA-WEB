@@ -28,7 +28,7 @@
 }
 
 .option-bar-title {
-  text-color: #222222;
+  color: #222222;
   font-size: 15px;
   margin: 0 0 33px 0;
 }
@@ -49,5 +49,9 @@
 }
 
 .option:hover {
+  border-bottom: 2px solid #1B3DEA;
+}
+
+.option.active {
   border-bottom: 2px solid #1B3DEA;
 }
