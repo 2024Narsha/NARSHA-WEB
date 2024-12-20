@@ -4,7 +4,7 @@ import { Button, Box, Option, Div, Select, Input, Label } from "./WriteStyle";
 import watodoAxios from "./watodoAxios";
 
 const LicenseWrite = () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem('ACCESS_TOKEN');
   const [school,setSchool] = useState("true")
   const [title, setTitle] = useState('');
   const [niceAccept, setNiceAccept] = useState("true");
@@ -35,7 +35,7 @@ const LicenseWrite = () => {
     };
 
     try{
-      const res = await watodoAxios.post("https://2024-narsha.hw0k.me/licenses", formData)
+      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/licenses`, formData)
       console.log("Response:", res.data);
     }catch{
 
