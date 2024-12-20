@@ -25,8 +25,9 @@ const Login = () => {
         `${import.meta.env.VITE_SERVER_URL}/auth/login`,
         {userId, password}
         );
+        console.log(res)
         if(res){
-          const { accessToken, refreshToken } = res.data;
+          const { accessToken, refreshToken } = res.data.data;
           localStorage.setItem('ACCESS_TOKEN',accessToken);
           localStorage.setItem('REFRASH_TOKEN',refreshToken);
           alert('로그인 완료');
@@ -42,6 +43,7 @@ const Login = () => {
         return
       }
       alert('네트워크 에러')
+      console.log(error)
     }
   }
 

@@ -22,7 +22,7 @@ const License = () => {
   const getMe = async() => {
     try{
       const res = await instance.get(`/auth/me`);
-    }catch (err) {
+    }catch(error) {
     navigate("/login");
     };
   };
