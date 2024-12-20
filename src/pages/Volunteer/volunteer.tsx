@@ -11,7 +11,8 @@ const Volunteer: React.FC = () => {
   };
 
   const handleOptionChange = (option: string) => {
-
+    const newSchoolType = option === '평일';
+    // getLicenseItem(newSchoolType);
   };
 
   return (

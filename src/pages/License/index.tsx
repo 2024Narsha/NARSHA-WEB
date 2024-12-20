@@ -1,18 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header'; // header import
 import LicenseItem from '../../components/LicenseItem';
 import OptionBar from '../../components/OptionBar';
 import './style.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import instance from "../../lids/axios/instance";
 
 const License = () => {
-
+  const ACCESS_TOKEN =
+    localStorage.getItem(
+      "ACCESS_TOKEN"
+    );
   const [licenseTitle, setLicenseTitle] = useState<string>('title');
   const [field, setField] = useState<string>('subject');
   const [niceAble, setNiceAble] = useState<boolean>(false);
 
-  const handleOption = async(schoolType: boolean) => {
+  const navigate = useNavigate();
+
+  const getMe = async() => {
+    try{
+      const res = await instance.get(`/auth/me`);
+    }catch(error) {
+    navigate("/login");
+    };
+  };
+
+  const getLicenseItem = async(schoolType: boolean) => {
     try {
       const endpoint = schoolType 
         ? `${import.meta.env.VITE_SERVER_URL}/licenses/in`
@@ -27,15 +42,19 @@ const License = () => {
       }else{
         console.log('불러올 값이 없음')
       }
-    } catch (error) {
+    } catch(error:any) {
       alert('네트워크 에러!');
     }
   };
 
   const handleOptionChange = (option: string) => {
     const newSchoolType = option === '교내';
-    handleOption(newSchoolType);
+    getLicenseItem(newSchoolType);
   };
+
+  useEffect(() => {
+    getMe();
+  }, []);
 
   return (
     <div className='license-container'>
