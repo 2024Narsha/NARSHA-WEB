@@ -10,6 +10,11 @@ const Volunteer: React.FC = () => {
     setSelectedCategory(category);
   };
 
+  const handleOptionChange = (option: string) => {
+    const newSchoolType = option === '평일';
+    // getLicenseItem(newSchoolType);
+  };
+
   return (
     <div className="volunteer-container">
       {/* OptionBar: 헤더 고정 */}
@@ -18,6 +23,7 @@ const Volunteer: React.FC = () => {
           title="봉사활동 조회"
           loption="평일"
           roption="주말"
+          onOptionChange={handleOptionChange}
         />
       </div>
 
