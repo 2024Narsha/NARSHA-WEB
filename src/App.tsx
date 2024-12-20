@@ -3,7 +3,7 @@ import Main from "./pages/Main/Main";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import License from "./pages/License";
-import WritePage from "./pages/contentWrite";
+import WritePage from "./pages/ContentWrite";
 import PreviewList from "./components/PreviewList";
 import PostDetail from "./components/PostDetail";
 import CategoryList from './pages/CategoryList/CategoryList';

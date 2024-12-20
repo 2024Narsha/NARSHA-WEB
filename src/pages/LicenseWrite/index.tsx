@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TopBar from "../../components/TopBar";
 import { Button, Box, Option, Div, Select, Input, Label } from "./WriteStyle";
-import axios from "axios";
+import watodoAxios from "./watodoAxios";
 
 const LicenseWrite = () => {
   const accessToken = localStorage.getItem('accessToken');
@@ -35,7 +35,7 @@ const LicenseWrite = () => {
     };
 
     try{
-      const res = await axios.post("https://2024-narsha.hw0k.me/licenses", formData)
+      const res = await watodoAxios.post("https://2024-narsha.hw0k.me/licenses", formData)
       console.log("Response:", res.data);
     }catch{
 
