@@ -16,7 +16,7 @@ const Preview = () => {
       const res = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/posts`
       )
-      if(res){
+      if(res.data.regular){
         setId(res.data.id)
         setClosedAt(res.data.closedAt)
         setTitle(res.data.title)
