@@ -16,18 +16,23 @@ const License = () => {
   const [licenseTitle, setLicenseTitle] = useState<string>('title');
   const [field, setField] = useState<string>('subject');
   const [niceAble, setNiceAble] = useState<boolean>(false);
+  const [selectedOption, setSelectedOption] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
   const getMe = async() => {
     try{
-      const res = await instance.get(`/auth/me`);
-    }catch(error) {
-    navigate("/login");
+      const res = await instance.get(`/users/me`);
+      if(res){
+        console.log(res)
+      }
+    }catch(error:any) {
+      navigate("/login");
+      console.log(error)
     };
   };
 
-  const getLicenseItem = async(schoolType: boolean) => {
+  const getLicenseItem = async(schoolType:boolean) => {
     try {
       const endpoint = schoolType 
         ? `${import.meta.env.VITE_SERVER_URL}/licenses/in`
@@ -48,8 +53,9 @@ const License = () => {
   };
 
   const handleOptionChange = (option: string) => {
-    const newSchoolType = option === '교내';
-    getLicenseItem(newSchoolType);
+    const schoolType = option === '교외';
+    setSelectedOption(schoolType)
+    getLicenseItem(schoolType);
   };
 
   useEffect(() => {
@@ -63,6 +69,7 @@ const License = () => {
         title='자격증 추천'
         loption='교내'
         roption='교외'
+        onOption={selectedOption}
         onOptionChange={handleOptionChange}
       />
       <div className='license-contents'>
