@@ -53,7 +53,7 @@ const LicenseWrite = () => {
 
     try{
       const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/licenses`, formData);
-      if (res) {
+      if (res.data.data){
         alert('자격증 정보가 성공적으로 등록되었습니다.');
         navigate('/license')
       }
@@ -61,8 +61,7 @@ const LicenseWrite = () => {
       if (error.response?.status === 403) {
         alert('권한이 없거나 로그인이 필요합니다.');
       }else {
-        alert('자격증 정보 등록에 실패했습니다. 다시 시도해주세요.');
-        console.log(error)
+        alert('자격증 정보 등록에 실패했습니다.');
       }
     };
   };
