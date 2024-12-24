@@ -37,8 +37,8 @@ const LicenseWrite = () => {
     try{
       const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/licenses`, formData)
       console.log("Response:", res.data);
-    }catch{
-
+    }catch(error:any){
+      console.log(error)
     }
   }
 
