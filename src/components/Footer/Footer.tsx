@@ -8,6 +8,7 @@ const Footer = () => {
   const isHome = useMatch('/');
   const isLicense = useMatch('/license');
   const isVolunteer = useMatch('/volunteer');  // 봉사활동 경로 확인
+  const isApply = useMatch('/apply-page');
 
   const handleImageClick = (path: string) => {
     if (path) {
@@ -39,8 +40,8 @@ const Footer = () => {
         <img
           src={`/people.svg`}
           alt="학교생활"
-          className={`footer-icon`}
-          onClick={() => {}}
+          className={`footer-icon ${isApply ? 'selected' : ''} large`} 
+          onClick={() => handleImageClick('/apply-page')}
         />
       </div>
     </div>

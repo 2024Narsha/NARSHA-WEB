@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.back-blur {
+  position: absolute;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(0deg, white 50%, rgba(0,0,0,0) 100%);
+  margin: 0 0 65px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-button {
+  width: 250px;
+  height: 40px;
+  background-color: #1B3DEA;
+  border-radius: 10px;
+  margin: 40px 0 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+}
+
+// 비활성화된 버튼 스타일
+.bottom-button.disabled {
+  /* 배경색을 회색으로 변경 */
+  background-color: #dddddd;
+  /* 마우스 커서를 not-allowed로 변경 */
+  cursor: not-allowed;
+}

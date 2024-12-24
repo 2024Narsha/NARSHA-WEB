@@ -68,11 +68,7 @@ watodoAxios.interceptors.response.use(
 
           try {
             const response = await axios.post(
-              `${import.meta.env.VITE_SERVER_URL}/auth/reissue`,
-              {
-                refreshToken,
-              }
-            );
+              `${import.meta.env.VITE_SERVER_URL}/auth/reissue`, {refreshToken});
 
             const newAccessToken = response.data.accessToken;
             const newRefreshToken = response.data.refreshToken;

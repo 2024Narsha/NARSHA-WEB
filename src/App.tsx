@@ -48,15 +48,15 @@ const App = () => {
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/category" element={<CategoryList />} />
           <Route path="/category-results" element={<CategoryResults />} />
-          <Route path="/post-detail" element={<PostDetail />} />
           <Route path="/apply-page" element={<ApplyPage />} />
           <Route path="/volunter-write" element={<VolunterWrite/>}/>
-          <Route path="/previewList" element={<PreviewList />} /> {/* 이거 삭제해야 함 */}
           <Route path="/song-apply" element={<SongApply />} />
           <Route path="/story-apply" element={<StoryApply />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students-post-detail" element={<StudentsPostDetail />} />
           <Route path="/license/write" element={<LicenseWrite/>}/>
+
+          <Route path="/post-detail/:id" element={<PostDetail />}/>
 
         </Route>
 

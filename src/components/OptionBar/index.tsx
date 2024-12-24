@@ -5,15 +5,15 @@ interface OptionBar {
   title:string
   loption:string
   roption:string
-  onOptionChange: (option: string) => void;
+  onOption:boolean // 현재 선택된 옵션 상태
+  onOptionChange: (option: string) => void; // 옵션 변경 핸들러
 }
 
 const OptionBar = (props:OptionBar) => {
-  const { title, loption, roption, onOptionChange } = props;
-  const [selectedOption, setSelectedOption] = useState<string>(loption);
+  const { title, loption, roption, onOption, onOptionChange } = props;
 
+  // 옵션 클릭 시 부모 컴포넌트의 핸들러 호출
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
     onOptionChange(option);
   };
 
@@ -22,11 +22,11 @@ const OptionBar = (props:OptionBar) => {
       <div className='option-bar-title'>{title}</div>
       <div className='option-wrap'>
         <div
-          className={`option ${selectedOption === loption ? 'active' : ''}`} 
+          className={`option ${!onOption ? 'active' : ''}`} 
           onClick={() => handleOptionClick(loption)}
         >{loption}</div>
         <div
-          className={`option ${selectedOption === roption ? 'active' : ''}`} 
+          className={`option ${onOption ? 'active' : ''}`} 
           onClick={() => handleOptionClick(roption)}
         >{roption}</div>
       </div>
