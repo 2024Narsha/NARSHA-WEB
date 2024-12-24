@@ -12,7 +12,15 @@ body{
   flex-direction: column;
   align-items: center;
   width: 360px;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.content-write-container{
+  width: 360px;
   margin: auto;
+  overflow-y: auto;
+  height: 1000px;
 }
 
 .container {
@@ -30,18 +38,13 @@ body{
   cursor: pointer;
 }
 
-.title {
-  font-size: 18px;
-  font-weight: bold;
-}
-
 /* 폼 스타일 */
 .form {
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-top: 20px;
-  height: 120vh;
+  height: 2000px;
 }
 
 .label {
@@ -67,10 +70,18 @@ body{
 }
 
 /* 본문 텍스트 에어리어 */
-.textarea {
+textarea {
   resize: none;
   border: 1px solid #888888;
   outline: none;
+  padding: 10px;
+  resize: none;
+  width: 320px;
+  height: 300px;
+  font-size: 10px;
+  color: black;
+  padding: 10px;
+  margin: auto;
 }
 
 /* 파일 업로드 버튼 */
@@ -118,6 +129,11 @@ body{
     object-position: center;
   }
 }
+input[type="date"]{
+  height: 30px;
+  padding: 0 10px;
+  appearance: none;
+}
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   background: url(../../../public/ico_calendar.svg) no-repeat;
@@ -128,8 +144,8 @@ input[type="date"]::-webkit-inner-spin-button,
 
 .title-input {
   width: 320px; /* 원하는 너비로 설정 */
-  font-size: 16px;
-  padding: 10px 0;
+  font-size: 10px;
+  padding: none;
   border: none;
   border-bottom: 1px solid #aaa; /* 아래쪽만 선을 그음 */
   outline: none; /* 선택 시 파란 테두리 제거 */
@@ -153,7 +169,7 @@ input[type="date"]::-webkit-inner-spin-button,
   height: 300px;
   font-size: 10px;
   color: black;
-  padding: 5px;
+  padding: 15px;
   margin: auto;
 }
 
@@ -244,5 +260,5 @@ select{
 }
 
 #spacer {
-  height: 200px;
+  height: 2000px;
 }

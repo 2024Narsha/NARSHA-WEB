@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, useRef} from 'react';
 import TopBar from '../../components/TopBar';
 import Button from './button';
 import './index.css';
-import ""
 import watodoAxios from '../../lids/axios/instance';
 
 const VolunterWrite = () => {
