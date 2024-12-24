@@ -2,6 +2,8 @@ import './Main.css';
 import React, { useState, useEffect } from 'react';
 import PreviewList from '../../components/PreviewList';
 import ContestView from '../../components/ContestView';
+import instance from "../../lids/axios/instance";
+import { useNavigate } from 'react-router-dom';
 
 const NoticeBar = () => {
   const notices = [
@@ -13,6 +15,20 @@ const NoticeBar = () => {
   const [currentNotice, setCurrentNotice] = useState(notices[0]);
   let noticeIndex = 0;
 
+  const navigate = useNavigate();
+
+  const getMe = async() => {
+    try{
+      const res = await instance.get(`/users/me`);
+      if(res){
+        console.log(res)
+      }
+    }catch(error:any) {
+      navigate("/login");
+      console.log(error)
+    };
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       noticeIndex = (noticeIndex + 1) % notices.length;
@@ -22,29 +38,32 @@ const NoticeBar = () => {
     return () => clearInterval(interval); // 컴포넌트 언마운트 시 interval 제거
   }, []);
 
+  useEffect(() => {
+    getMe();
+  }, []);
+
   return (
     <div className="notice-bar">
       <img src={`/Announ.png`} alt="공지 아이콘" className="notice-icon" />
       <div className="notice-text">{currentNotice}</div>
     </div>
-  );
-};
+    );
+  };
 
-const Main = () => {
-  return (
-    <div className="centered-container">
-      <NoticeBar />
-      <div className='parent-container'> 
-      <div className="content">
-        <PreviewList />
-        <p />
-        <ContestView />
-        <p /><p /><p />
-        {/* 여기에 페이지의 내용을 추가합니다. */}
+  const Main = () => {
+    return (
+      <div className="centered-container">
+        <NoticeBar />
+        <div className='parent-container'> 
+        <div className="content">
+          <PreviewList /> {/* 모집 중인 대회 */}
+          <p />
+          <ContestView /> {/* 정기 대회 */}
+          <p /><p /><p />
+        </div>
       </div>
-    </div>
-    </div>
-  );
-};
+      </div>
+    );
+  };
 
 export default Main;

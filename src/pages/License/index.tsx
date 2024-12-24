@@ -55,6 +55,7 @@ const License = () => {
       }
     } catch(error:any) {
       alert('네트워크 에러!');
+      console.log(error)
     }
   };
 

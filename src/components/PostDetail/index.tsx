@@ -57,8 +57,6 @@ const PostDetail = () => {
         setCategory(res.data.category);
         setInSchool(res.data.inSchool);
         setThumbnails(res.data.thumbnails);
-      }else{
-        console.log('불러올 값이 없음')
       }
     }catch(error:any){
       alert('네트워크 에러!');
@@ -122,12 +120,12 @@ const PostDetail = () => {
         <img src={thumbnails[0]} />
       </div>
 
-      <div className='post-detail-title'>{title}</div>
+      <div className='post-detail-title'>{title===undefined ? 'title' : title}</div>
 
       <div className='post-attribute-wrap'>
         <div className='attribute'>
           <p className='attribute-title' >신청 기한</p>
-          <p>{closedAt}</p>
+          <p>{closedAt===undefined ? '---' : closedAt}</p>
         </div>
         <div className='split-line'></div>
         <div className='attribute'>
