@@ -1,46 +1,78 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "../../components/TopBar";
 import { Button, Box, Option, Div, Select, Input, Label } from "./WriteStyle";
 import watodoAxios from "./watodoAxios";
+import { useNavigate } from "react-router-dom";
+import instance from "../../lids/axios/instance";
 
 const LicenseWrite = () => {
-  const accessToken = localStorage.getItem('ACCESS_TOKEN');
-  const [school,setSchool] = useState("true")
-  const [title, setTitle] = useState('');
-  const [niceAccept, setNiceAccept] = useState("true");
-  const [subject, setSubject] = useState('프로그래밍');
+  const ACCESS_TOKEN = localStorage.getItem('ACCESS_TOKEN');
 
-  const handleTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+  const [inSchool, setInSchool] = useState<boolean>(true);
+  const [licenseTitle, setLicenseTitle] = useState<string>('');
+  const [niceAble, setNiceAble] = useState<boolean>(true);
+  const [field, setField] = useState<string>('공통');
+
+  const navigate = useNavigate();
+
+  const getMe = async() => {
+    try{
+      const res = await instance.get(`/users/me`);
+      if(res){
+        console.log(res.data)
+      }
+    }catch(error:any) {
+      navigate("/login");
+      console.log(error)
+    };
+  };
+
+  const handleLicenseTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLicenseTitle(e.target.value);
+  }
+  
+  const handleInSchool = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setInSchool(e.target.value === 'true');
   }
 
-  const handleSchool = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSchool(e.target.value)
+  const handleNiceAble = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setNiceAble(e.target.value === 'true');
   }
 
-  const handleNiceAcceept = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setNiceAccept(e.target.value);
-  }
-
-  const handleSubject = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSubject(e.target.value);
+  const handleField = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setField(e.target.value);
   }
 
   const uploadLicense = async () => {
     const formData = {
-      title,
-      school,
-      niceAccept,
-      subject
+      licenseTitle, 
+      niceAble, 
+      field,  
+      inSchool 
     };
 
     try{
-      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/licenses`, formData)
-      console.log("Response:", res.data);
-    }catch{
+      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/licenses`, formData, 
+      //{
+      //   headers: {
+      //     'Authorization': `Bearer ${ACCESS_TOKEN}`,
+      //   }}
+      );
+      if (res.data.data) {
+        alert('자격증 정보가 성공적으로 등록되었습니다.');
+      }
+    }catch(error:any){
+      if (error.response?.status === 403) {
+        alert('권한이 없거나 로그인이 필요합니다.');
+      } else {
+        alert('자격증 정보 등록에 실패했습니다. 다시 시도해주세요.');
+      }
+    };
+  };
 
-    }
-  }
+  useEffect(() => {
+    getMe();
+  }, []);
 
   return (
     <Box var="center">
@@ -53,15 +85,15 @@ const LicenseWrite = () => {
               type="text"
               id="title"
               placeholder="제목을 입력해 주세요"
-              onChange={handleTitle}
-              value={title}
+              onChange={handleLicenseTitle}
+              value={licenseTitle}
               var="title"  
             />
           </Box>
 
           <Box var="form-group">
           <Label htmlFor="location" className='margin-left'>교내 or 교외</Label>
-          <Select id="location" title="교내 or 교외 선택" onChange={handleSchool}>
+          <Select id="location1" title="교내 or 교외 선택" onChange={handleInSchool}>
             <Option value="true">교내</Option>
             <Option value="false">교외</Option>
           </Select>
@@ -69,15 +101,16 @@ const LicenseWrite = () => {
 
           <Box var="form-group">
             <Label htmlFor="location" className='margin-left'>나이스등재 가능 여부</Label>
-            <Select id="location" title="나이스등재 가능 여부" onChange={handleNiceAcceept}>
-              <Option value="true">가능</Option>
-              <Option value="false">불가</Option>
+            <Select id="location2" title="나이스등재 가능 여부" onChange={handleNiceAble}>
+              <Option value='true'>가능</Option>
+              <Option value='false'>불가</Option>
             </Select>
           </Box>
 
           <Box var="form-group">
             <Label htmlFor="location" className='margin-left'>해당 분야</Label>
-            <Select id="location" title="나이스등재 가능 여부" onChange={handleSubject}>
+            <Select id="location3" title="나이스등재 가능 여부" onChange={handleField}>
+              <Option value="공통">공통</Option>
               <Option value="프로그래밍">프로그래밍</Option>
               <Option value="데이터베이스">데이터베이스</Option>
               <Option value="웹프로그래밍">웹프로그래밍</Option>

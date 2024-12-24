@@ -29,7 +29,7 @@ const Login = () => {
         if(res){
           const { accessToken, refreshToken } = res.data.data;
           localStorage.setItem('ACCESS_TOKEN',accessToken);
-          localStorage.setItem('REFRASH_TOKEN',refreshToken);
+          localStorage.setItem('REFRESH_TOKEN',refreshToken);
           alert('로그인 완료');
           navigate('/')
         }
@@ -59,7 +59,7 @@ const Login = () => {
       </div>
 
       <div className='login-input-box-wrap'>
-      <div>
+        <div>
           <p className='label'>아이디</p>
           <input 
             className='input-box' 

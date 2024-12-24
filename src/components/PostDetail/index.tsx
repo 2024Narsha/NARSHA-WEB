@@ -12,17 +12,17 @@ const PostDetail = () => {
   const [id, setId] = useState<number>();
   const [title, setTitle] = useState<string>('title');
   const [details, setDetails] = useState<string>();
-  const [closedAt, setClosedAt] = useState<Date | undefined>();
+  const [closedAt, setClosedAt] = useState<string>();
   const [category, setCategory] = useState<string | undefined>();
   const [inSchool, setInSchool] = useState<boolean>(true);
-  const [thumbnails, setThumbnails] = useState<string | undefined>();
+  const [thumbnails, setThumbnails] = useState<string>('/logo(blue).svg');
 
   const navigate = useNavigate();
 
   const getMe = async() => {
     try{
-      const res = await instance.get(`/auth/me`);
-    }catch(error) {
+      const res = await instance.get(`/users/me`);
+    }catch(error:any) {
     navigate("/login");
     };
   };
@@ -36,11 +36,10 @@ const PostDetail = () => {
         setId(res.data.id);
         setTitle(res.data.title);
         setDetails(res.data.detail);
+        setClosedAt(res.data.closedAt);
         setCategory(res.data.category);
         setInSchool(res.data.inSchool);
         setThumbnails(res.data.thumbnails);
-
-        const closedAt = res.data.closedAt
       }else{
         console.log('불러올 값이 없음')
       }
@@ -61,7 +60,7 @@ const PostDetail = () => {
 
       <div className='post-detail-img-wrap'>
         <div className='post-detail-deadline'>D-13</div>
-        <img src={thumbnails ? thumbnails : `/logo(blue).svg`} />
+        <img src={thumbnails} />
       </div>
 
       <div className='post-detail-title'>{title}</div>
@@ -69,7 +68,7 @@ const PostDetail = () => {
       <div className='post-attribute-wrap'>
         <div className='attribute'>
           <p className='attribute-title' >신청 기한</p>
-          <p>2024.09.23 ~ 10.18</p>
+          <p>{closedAt}</p>
         </div>
         <div className='split-line'></div>
         <div className='attribute'>
