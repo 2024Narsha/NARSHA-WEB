@@ -11,7 +11,7 @@ import CategoryResults from "./pages/CategoryResults/CategoryResults";
 import StartPage from "./pages/StartPage";
 import ApplyPage from "./pages/ApplyPage";
 import Volunteer from './pages/Volunteer/volunteer';
-import VolunterWrite from "./pages/VolunterWrite";
+import VolunterWrite from "./pages/VolunteerWrite";
 
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
