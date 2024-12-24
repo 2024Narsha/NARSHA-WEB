@@ -10,7 +10,10 @@ const BottomButton = (props:BottomButton) => {
 
   return (
     <div className="back-blur">
-      <button className="bottom-button" onClick={onClick}>{title}</button>
+      <button 
+        className='bottom-button'
+        onClick={onClick}
+      >{title}</button>
     </div>
   )
 }

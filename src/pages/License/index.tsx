@@ -8,14 +8,25 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import instance from "../../lids/axios/instance";
 
+interface License {
+  licenseId: number;
+  licenseTitle: string;
+  field: string;
+  niceAble: boolean;
+  inSchool: boolean;
+  author: {
+    idx: number;
+    userId: string;
+    role: string;
+  };
+}
+
 const License = () => {
   const ACCESS_TOKEN =
     localStorage.getItem(
       "ACCESS_TOKEN"
     );
-  const [licenseTitle, setLicenseTitle] = useState<string>('title');
-  const [field, setField] = useState<string>('subject');
-  const [niceAble, setNiceAble] = useState<boolean>(false);
+  const [licenses, setLicenses] = useState<License[]>([]);
   const [selectedOption, setSelectedOption] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -32,18 +43,13 @@ const License = () => {
     };
   };
 
-  const getLicenseItem = async(schoolType:boolean) => {
+  const getLicenseItem = async() => {
     try {
-      const endpoint = schoolType 
-        ? `${import.meta.env.VITE_SERVER_URL}/licenses/in`
-        : `${import.meta.env.VITE_SERVER_URL}/licenses/out`;
-
-      const res = await axios.get(endpoint);
+      const endpoint = !selectedOption ? '/licenses/in' : '/licenses/out';
+      const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}${endpoint}`);
       
-      if (res.data && res.data.licenseTitle && res.data.Field !== undefined) {
-        setLicenseTitle(res.data.licenseTitle);
-        setField(res.data.Field);
-        setNiceAble(res.data.niceAble);
+      if (res.data) {
+        setLicenses(res.data);
       }else{
         console.log('불러올 값이 없음')
       }
@@ -54,13 +60,16 @@ const License = () => {
 
   const handleOptionChange = (option: string) => {
     const schoolType = option === '교외';
-    setSelectedOption(schoolType)
-    getLicenseItem(schoolType);
+    setSelectedOption(schoolType);
   };
 
   useEffect(() => {
     getMe();
   }, []);
+
+  useEffect(() => {
+    getLicenseItem();
+  },[selectedOption]);
 
   return (
     <div className='license-container'>
@@ -73,7 +82,15 @@ const License = () => {
         onOptionChange={handleOptionChange}
       />
       <div className='license-contents'>
-        <LicenseItem licenseName={licenseTitle} subject={field} status={niceAble ? '나이스등재 가능' : '나이스등재 불가능'} />
+        {licenses.map((item: License) => (
+            <LicenseItem
+              key={item.licenseId}
+              licenseName={item.licenseTitle}
+              subject={item.field}
+              status={item.niceAble ? '나이스등재 가능' : '나이스등재 불가능'} 
+            />
+          ))
+        }
       </div>
 
       <Footer />
