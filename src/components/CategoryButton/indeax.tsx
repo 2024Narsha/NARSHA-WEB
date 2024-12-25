@@ -1,20 +1,20 @@
 import './style.css'
 
 interface CategoryButton {
-  category:string;
+  name:string;
   categoryDelete: () => void;
 }
 
 const CategoryButton = (props:CategoryButton) => {
-  const {category, categoryDelete} = props;
+  const {name, categoryDelete} = props;
 
   return (
-    <div>
-      <div className='category-box'>{category}</div>
-      <div className='category-delete' onClick={categoryDelete}>
-        <img src='X.svg' />
+      <div className='category-box'>
+        {name}
+        <div className='category-delete' onClick={categoryDelete}>
+          <img src='/X.svg' />
         </div>
-    </div>
+      </div>
   )
 }
 

@@ -28,7 +28,7 @@
   display: inline-block;
 }
 
-.left, .right {
+.left {
   padding: 7.5px 10px;
 }
 
@@ -42,4 +42,10 @@
 
 .right {
   margin-left: auto;
+}
+
+.profile{
+  width: 100%;
+  height: 100%;
+  padding: 7.5px 10px;
 }

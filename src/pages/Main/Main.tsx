@@ -4,6 +4,7 @@ import PreviewList from '../../components/PreviewList';
 import ContestView from '../../components/ContestView';
 import instance from "../../lids/axios/instance";
 import { useNavigate } from 'react-router-dom';
+import SearchBox from '../../components/SearchBox';
 
 const NoticeBar = () => {
   const notices = [
@@ -53,6 +54,7 @@ const NoticeBar = () => {
   const Main = () => {
     return (
       <div className="centered-container">
+        <SearchBox />
         <NoticeBar />
         <div className='parent-container'> 
         <div className="content">

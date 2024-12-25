@@ -19,7 +19,7 @@ const PostDetail = () => {
   const [id, setId] = useState<number>();
   const [title, setTitle] = useState<string>('title');
   const [details, setDetails] = useState<string>();
-  const [closedAt, setClosedAt] = useState<string>();
+  const [closedAt, setClosedAt] = useState<string>('');
   const [category, setCategory] = useState<string | undefined>();
   const [inSchool, setInSchool] = useState<boolean>(true);
   const [thumbnails, setThumbnails] = useState<[string]>(['/logo(blue).svg']);
@@ -103,6 +103,29 @@ const PostDetail = () => {
     userData?.role === 'admin'
   );
 
+  const getDDay = (dateString: string):string => {
+    const targetDate = new Date(dateString); // 목표 날짜
+    const today = new Date(); // 오늘 날짜
+  
+    // 오늘 날짜와 목표 날짜의 차이 계산 (밀리초 단위)
+    const timeDiff = targetDate.getTime() - today.getTime();
+    
+    // 밀리초를 일 단위로 변환
+    const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  
+    // D-nn 형식으로 반환
+    return `D-${daysRemaining}`;
+  };
+
+  const formatDate = (dateString: string): string => {
+    const targetDate = new Date(dateString); // 목표 날짜
+    const year = targetDate.getFullYear(); // 연도
+    const month = (targetDate.getMonth() + 1).toString().padStart(2, '0'); // 월 (0부터 시작, 1을 더해줌)
+    const day = targetDate.getDate().toString().padStart(2, '0'); // 일 (1일부터 시작)
+  
+    return `${year}-${month}-${day}`;
+  };
+
   useEffect(() => {
     getMe();
   }, []);
@@ -119,7 +142,7 @@ const PostDetail = () => {
       <TopBar title='대회본문'/>
 
       <div className='post-detail-img-wrap'>
-        <div className='post-detail-deadline'>D-13</div>
+        <div className='post-detail-deadline'>{getDDay(closedAt)}</div>
         <img src={thumbnails[0] || 'Logo(blue).svg'} />
       </div>
 
@@ -128,7 +151,7 @@ const PostDetail = () => {
       <div className='post-attribute-wrap'>
         <div className='attribute'>
           <p className='attribute-title' >신청 기한</p>
-          <p>{closedAt===undefined ? '---' : closedAt}</p>
+          <p>{closedAt===undefined ? '---' : formatDate(closedAt)}</p>
         </div>
         <div className='split-line'></div>
         <div className='attribute'>

@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CategoryList.css';
+import axios from 'axios';
+
+interface Category {
+  categoryId:number;
+  categoryName:string;
+}
 
 const CategorySearch = () => {
   return (
@@ -13,7 +19,9 @@ const CategorySearch = () => {
 };
 
 const CategoryList = () => {
+  const [categories, setCategories] = useState<[Category]>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]); // 선택된 카테고리들을 배열로 저장
+
   const navigate = useNavigate();
 
   // 카테고리 버튼 클릭 시 상태 업데이트
@@ -25,13 +33,44 @@ const CategoryList = () => {
     }
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = async() => {
     if (selectedCategories.length === 0) {
       alert('카테고리를 하나 이상 선택해주세요');
-    } else {
-      navigate(`/category-results/${selectedCategories.join(',')}`);
+      return
     }
+
+    try {
+    // 선택된 카테고리 ID를 쿼리 파라미터 형식으로 변환
+    const query = selectedCategories
+      .map((categoryId) => `categoryIds=${categoryId}`)
+      .join('&'); // "categoryIds=1&categoryIds=2&categoryIds=3"와 같은 형태로 변환
+
+    // `categoryId`는 고정된 값으로 경로에 포함될 수 있습니다.
+    const categoryId = 123; // 예시로 categoryId를 설정
+    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/search/category/${categoryId}?${query}`);
+
+    // 검색 결과 페이지로 네비게이션
+    navigate(`/search/category/${categoryId}?${query}`);
+    }catch(error:any){
+      console.error(error)
+    };
   };
+
+  const getCategoryList = async() => {
+    try{
+      const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/categories`);
+      if(res){
+        console.log(res.data);
+        setCategories(res.data);
+      }
+    }catch(error:any){
+      console.error(error);
+    };
+  };
+
+  useEffect(()=>{
+    getCategoryList()
+  }, [])
 
   return (
     <div className="centered-container">
@@ -40,17 +79,13 @@ const CategoryList = () => {
       <h2 className="category-title">대회 분야</h2>
 
       <div className="category-buttons">
-        {[
-          '공통', '정보 보안', '아이디어톤', '게임', '해커톤', '프로그래밍', '머신러닝', '로봇', 
-          '웹 개발', '앱 개발', 'IoT', '블록체인', '데이터 분석', '디자인', '빅데이터', '컴퓨터 비전', 
-          '소프트웨어 설계', '클라우드 개발', '오픈소스', '창업'
-        ].map((category) => (
+        {categories?.map((item:Category) => (
           <button
-            key={category}
-            className={`category-button ${selectedCategories.includes(category) ? 'selected' : ''}`}
-            onClick={() => handleCategoryClick(category)}
+            key={item.categoryId}
+            className={`category-button ${selectedCategories.includes(item.categoryName) ? 'selected' : ''}`}
+            onClick={() => handleCategoryClick(item.categoryName)}
           >
-            {category}
+            {item.categoryName}
           </button>
         ))}
       </div>
