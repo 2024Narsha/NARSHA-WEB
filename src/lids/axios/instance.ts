@@ -74,8 +74,8 @@ watodoAxios.interceptors.response.use(
               }
             );
 
-            const newAccessToken = response.data.accessToken;
-            const newRefreshToken = response.data.refreshToken;
+            const newAccessToken = response.data.data.accessToken;
+            const newRefreshToken = response.data.data.refreshToken;
 
             localStorage.setItem("ACCESS_TOKEN", newAccessToken);
             localStorage.setItem("REFRESH_TOKEN", newRefreshToken);
