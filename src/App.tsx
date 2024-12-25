@@ -61,7 +61,7 @@ const App = () => {
           <Route path="/posts/:id" element={<PostDetail />}/>
 
           <Route path="/search/keyword/:keyword" element={<SearchResults />} />
-        <Route path="/search/category/:categoryId" element={<SearchResults />} />
+          <Route path="/search/category/:categoryId" element={<SearchResults />} />
 
           <Route path="/joined-list" element={<JoinedList />}/>
 
