@@ -199,6 +199,7 @@ input[type="date"]::-webkit-inner-spin-button,
 .add-image{
   width: 60px;
   height: 60px;
+  border: none;
 }
 
 .border{
@@ -261,4 +262,50 @@ select{
 
 #spacer {
   height: 2000px;
+}
+
+imageWrap{
+  width: 360px;
+  height: 100px;
+}
+
+.fileItem {
+  width: 100%;
+  height: 64px;
+  background-color: #F1F1F1;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  & > div:first-child {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    & > p:first-child {
+      font-size: 16px;
+      font-family: 600;
+    }
+    & > p:last-child {
+      font-size: 12px;
+      font-family: 400;
+      color: gray;
+    }
+  }
+  & > div:last-child {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      object-position: center;
+      transform: rotateX(45deg);
+    }
+  }
 }

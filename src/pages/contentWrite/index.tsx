@@ -8,8 +8,9 @@ const ContestWrite = () => {
   const [files, setFiles] = useState<File[]>([]);
 
   const fileRef = useRef<HTMLInputElement|null>(null);
-  
-  const [image, setImage] = useState<String[]>([]);
+  const imageRef = useRef<HTMLInputElement|null>(null);
+
+  const [image, setImage] = useState<File[]>([]);
   const [title, setTitle] = useState('');
   const [reguler,setReguler] = useState<boolean>(false);
   const [inSchool, setInScholl] = useState<boolean>(true);
@@ -17,10 +18,17 @@ const ContestWrite = () => {
   const [deadline, setDeadlineState] = useState("");
   const [details, setDetails] = useState('');
 
-  const handleImageChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e : React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const image = e.target.files[0];
-      setImage(prev=>[...prev, image.toString()]);
+      const image = e.target.files;
+      console.log(image)
+      try{
+        const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`,image)
+        console.log(res)
+        setImage(prev=>[...prev, res.data]);
+      } catch(error:any){
+        console.log(error)
+      }
     }
   }
 
@@ -54,6 +62,12 @@ const ContestWrite = () => {
     }
   }
 
+  const openImageSelector = () => {
+    if(imageRef.current) {
+      imageRef.current.click();
+    }
+  }
+
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const file = event.target.files[0];
@@ -63,6 +77,10 @@ const ContestWrite = () => {
 
   const deleteFile = (e: File) => {
     setFiles(prev=>prev.filter(item=>(item.lastModified.toString()+item.name != e.lastModified.toString()+item.name)));
+  }
+
+  const deleteImage = (e:File) => {
+    setImage(prev=>prev.filter(item=>(item.lastModified.toString()+item.name != e.lastModified.toString()+item.name)))
   }
 
   const uploadContest = async () => {
@@ -94,10 +112,25 @@ const ContestWrite = () => {
     <div className='centered-container'>
       <div className="container">
         
-          <button title='이미지 삽입' className='add-image margin-left margin-top2' onClick={openFileSelector}>
-            <img src="public/ico_calendar.svg" alt="이미지 삽입 아이콘"  />
-            <input type="image" id="image" hidden onChange={handleImageChange} ref={fileRef}/>
-          </button>
+          <div title='이미지 삽입' className='add-image margin-left margin-top2' onClick={openImageSelector}>
+            <img src="/add_image.svg" alt="이미지 삽입 아이콘"  />
+            <input type="file" id="image" hidden onChange={handleImageChange} ref={imageRef}/>
+          </div>
+          <div className='imageWrap'>
+          {
+              image.map((item)=>(
+                <div className='imageItem' key={`${item.name}-${item.lastModified}`}>
+                  <div>
+                    <p>{item.name}</p>
+                    <img src={item.name} alt="인터넷 오류"/>
+                  </div>
+                  <div onClick={()=>deleteImage(item)}>
+                    <img src='/deleteFile.svg' alt=''/>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
 
         <div className="form">
 
@@ -176,7 +209,7 @@ const ContestWrite = () => {
           <div id='fileWrap'>
             {
               files.map((item)=>(
-                <div className='fileItem'>
+                <div className='fileItem' key={`${item.name}-${item.lastModified}`}>
                   <div>
                     <p>{item.name}</p>
                     <p>{Math.floor(item.size / (1024))}MB</p>
