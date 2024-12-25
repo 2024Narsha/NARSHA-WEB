@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const goToMyList = () =>{
+    navigate('/applicate-list')
+  };
+
   return (
     <header className = "header">
       <div className = "header-2">
@@ -8,7 +15,7 @@ const Header = () => {
           <a href = "/category" className="header-image left">
             <img src = {`/hamburger.svg`} alt="Hamburger" /></a>
             <img src = {`/Whale.svg`} alt="Whale logo" className="header-image center" />
-          <img src = {`/profile.svg`} alt="Profile" className="header-image right" />
+          <div className="header-image right" onClick={goToMyList}><img src = {`/profile.svg`} alt="Profile" className="profile"/></div>
         </div>
       </div>
     </header>

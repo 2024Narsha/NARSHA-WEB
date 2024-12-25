@@ -32,6 +32,20 @@ const ContestPreview = () => {
     };
   };
 
+  const getDDay = (dateString: string):string => {
+    const targetDate = new Date(dateString); // 목표 날짜
+    const today = new Date(); // 오늘 날짜
+  
+    // 오늘 날짜와 목표 날짜의 차이 계산 (밀리초 단위)
+    const timeDiff = targetDate.getTime() - today.getTime();
+    
+    // 밀리초를 일 단위로 변환
+    const daysRemaining = timeDiff>0 ? Math.ceil(timeDiff / (1000 * 3600 * 24)) : 0;
+  
+    // D-nn 형식으로 반환
+    return `D-${daysRemaining}`;
+  };
+
   useEffect(() => {
     getContestPreview()
   }, []);
@@ -44,7 +58,7 @@ const ContestPreview = () => {
           <div className='preview-img'>
             <img src={item.thumbnails?.[0] || 'Logo(blue).svg'}/>
           </div>
-          <div className='deadline-box'>{item.closedAt || 'D-0'}</div>
+          <div className='deadline-box'>{item.closedAt ? getDDay(item.closedAt) : 'D-0'}</div>
         </div>
         <div className='preview-title'>{item.title || '제목 없음'}</div>
       </div>

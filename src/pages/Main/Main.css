@@ -1,15 +1,6 @@
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 47px;
-  color: white;
-  z-index: 1000; /* 헤더가 공지사항보다 위에 위치 */
-}
-
 .notice-bar {
   position: fixed;
-  top: 47px; /* 헤더 아래에 위치 */
+  top: 47px;
   width: 100%;
   height: 50px; /* 공지사항 높이 */
   max-width: 360px;
@@ -21,7 +12,7 @@
   justify-content: flex-start;
   padding: 0 10px; /* 양쪽 여백 */
   font-weight: bold;
-  z-index: 1001; /* 헤더보다 위로 설정 */
+  z-index: 3; /* 헤더보다 위로 설정 */
   background-color: white;
 }
 
@@ -54,7 +45,8 @@
 }
 
 .content {
-  height: calc(100vh - 147px);
+  height: 100vh;
+  margin: 110px 0 30px 0;
 }
 
 .content p {
