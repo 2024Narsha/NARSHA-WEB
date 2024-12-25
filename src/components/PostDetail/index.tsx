@@ -52,7 +52,7 @@ const PostDetail = () => {
       if (res){
         setId(res.data.id);
         setTitle(res.data.title);
-        setDetails(res.data.detail);
+        setDetails(res.data.details);
         setClosedAt(res.data.closedAt);
         setCategory(res.data.category);
         setInSchool(res.data.inSchool);
@@ -69,23 +69,15 @@ const PostDetail = () => {
       await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/join/${params.id}`
       );
-      // 참가 성공시 참가 상태를 true로 변경
-      setIsParticipated(true);
-    }catch(error){
+    }catch(error:any){
       alert('참가 실패')
       console.log(error)
+      if (error.response) {
+        console.error('서버 응답:', error.response.data);
+        console.error('서버 상태:', error.response.status);
+      }
     };
   };
-
-  useEffect(() => {
-    getMe();
-  }, []);
-
-  useEffect(() => {
-    if (params.id){
-      getList();
-    }
-  }, [params.id]);
 
   // 참가하기 버튼 클릭 핸들러
   const handleParticipateClick = () => {
@@ -110,6 +102,16 @@ const PostDetail = () => {
     userData?.role === 'admin'
   );
 
+  useEffect(() => {
+    getMe();
+  }, []);
+
+  useEffect(() => {
+    if (params.id){
+      getList();
+    }
+  }, [params.id]);
+
   return (
     <div className="post-detail-container">
       <Header />
@@ -117,7 +119,7 @@ const PostDetail = () => {
 
       <div className='post-detail-img-wrap'>
         <div className='post-detail-deadline'>D-13</div>
-        <img src={thumbnails[0]} />
+        <img src={thumbnails[0] || 'Logo(blue).svg'} />
       </div>
 
       <div className='post-detail-title'>{title===undefined ? 'title' : title}</div>

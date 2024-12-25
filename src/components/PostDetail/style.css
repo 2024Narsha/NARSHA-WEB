@@ -46,7 +46,7 @@
 }
 
 .post-detail-img-wrap img {
-  width: 100%;
+  min-width: 320px;
   height: 200px;
 }
 
@@ -103,5 +103,6 @@
   color: #444444;
   font-size: 16px;
   font-weight: 400;
-  word-break:break-all;
+  word-break: keep-all;
+  word-wrap: break-word;
 }

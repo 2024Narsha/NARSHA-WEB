@@ -3,26 +3,29 @@ import './style.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+interface PostData {
+  id: number;
+  title: string;
+  closedAt: string;
+  thumbnails: string[];
+  regular: boolean;
+  attachmentFileUrl:string;
+}
+
 const Preview = () => {
-  const [id, setId] = useState<number>();
-  const [closedAt, setClosedAt] = useState<string>();
-  const [title, setTitle] = useState<string>();
-  const [thumbnails, setThumbnails] = useState<[string]>()
+  const [posts, setPosts] = useState<PostData[]>([]);
 
   const navigate = useNavigate();
 
   const getPostPreview = async() => {
     try{
-      const res = await axios.get(
+      const res = await axios.get<PostData[]>(
         `${import.meta.env.VITE_SERVER_URL}/posts`
       )
-      if(res.data.regular){
-        setId(res.data.id)
-        setClosedAt(res.data.closedAt)
-        setTitle(res.data.title)
-        setThumbnails(res.data.thumbnails)
-
-        console.log(res)
+      if(res.data && res.data.length > 0) {
+        // regular가 true인 모든 게시물 필터링
+        const regularPosts = res.data.filter(post => post.regular === true);
+        setPosts(regularPosts);
       }
     }catch(error:any){
       alert('네트워크 에러!');
@@ -35,16 +38,20 @@ const Preview = () => {
   }, []);
 
   return (
-    <div className='post-preview-container' onClick={()=>{navigate(`/posts/${id}`)}}>
-      <div className='preview-img-box'>
-        <div className='preview-img'>
-          <img src={thumbnails===undefined ? 'Logo(blue).svg' : thumbnails[0]} />
+    <>
+    {posts.map((item:PostData) => (
+      <div className='post-preview-container' onClick={()=>{navigate(`/posts/${item.id}`)}} key={item.id}>
+        <div className='preview-img-box'>
+          <div className='preview-img'>
+            <img src={item.thumbnails?.[0] || 'Logo(blue).svg'} />
+          </div>
+          <div className='deadline-box'>{item.closedAt || 'D-0'}</div>
         </div>
-        <div className='deadline-box'>{closedAt===undefined ? 'D-0' : closedAt}</div>
-      </div>
 
-      <div className='preview-title'>{title===undefined ? 'title' : title}</div>
-    </div>
+        <div className='preview-title'>{item.title || '제목 없음'}</div>
+      </div>
+    ))}
+    </>
   )
 }
 

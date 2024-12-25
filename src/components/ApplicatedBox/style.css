@@ -13,10 +13,10 @@
 
 
 .applicated-box-container{
-  width: 33rem;
-  height: 8.4rem;
-  border: 0.8rem solid #1B3DEA;
-  border-width: 0.8rem 0 0 0;
+  max-width: 330px;
+  height: 84px;
+  border: 8px solid #1B3DEA;
+  border-width: 8px 0 0 0;
   background-color: white;
   display: flex;
   justify-content: center;
