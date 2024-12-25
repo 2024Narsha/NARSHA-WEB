@@ -26,8 +26,6 @@ const PostDetail = () => {
 
   // 확인 알림창 표시 여부 상태
   const [showAlert, setShowAlert] = useState<boolean>(false);
-  // 대회 참가 여부 상태
-  const [isParticipated, setIsParticipated] = useState<boolean>(false);
   // 로그인한 사용자 정보 상태
   const [userData, setUserData] = useState<UserData | null>(null);
 
@@ -38,7 +36,7 @@ const PostDetail = () => {
   const getMe = async() => {
     try{
       const res = await instance.get(`/users/me`);
-      setUserData(res.data);
+      setUserData(res.data.data);
     }catch(error:any) {
       navigate("/login");
     };
@@ -46,8 +44,8 @@ const PostDetail = () => {
 
   const getList = async() => {
     try{
-      const res = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/posts/${params.id}`
+      const res = await instance.get(
+        `/posts/${params.id}`
       );
       if (res){
         setId(res.data.id);
@@ -66,11 +64,14 @@ const PostDetail = () => {
 
   const participate = async () => {
     try{
-      await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/join/${params.id}`
-      );
+      await instance.post(`/join/${params.id}`);
     }catch(error:any){
+      if(error.response.status === 409){
+        alert('이미 참여한 대회입니다!')
+        return
+      }
       alert('참가 실패')
+
       console.log(error)
       if (error.response) {
         console.error('서버 응답:', error.response.data);
@@ -138,12 +139,11 @@ const PostDetail = () => {
 
       <div className='post-detail-text'>{details}</div>
 
-      {/* 참가하기 버튼 (관리자가 아니고, 아직 참가하지 않은 경우에만 표시) */}
-      {shouldShowButton && !isParticipated && (
+      {/* 참가하기 버튼 (관리자가 아닌 경우에만 표시) */}
+      {shouldShowButton && (
         <DisableButton
           title="참가하기"
           onClick={handleParticipateClick}
-          disabled={isParticipated}
         />
       )}
 
