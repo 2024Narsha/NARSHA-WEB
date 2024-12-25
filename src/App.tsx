@@ -22,6 +22,7 @@ import StoryApply from "./pages/StoryApply";
 import Students from "./pages/Studenets";
 import StudentsPostDetail from "./pages/StudentsPostDetail";
 import LicenseWrite from "./pages/LicenseWrite";
+import ApplicatedBox from "./components/ApplicatedBox";
 
 
 const Wrapper = () => {
@@ -56,7 +57,7 @@ const App = () => {
           <Route path="/students-post-detail" element={<StudentsPostDetail />} />
           <Route path="/license/write" element={<LicenseWrite/>}/>
 
-          <Route path="/post-detail/:id" element={<PostDetail />}/>
+          <Route path="/posts/:id" element={<PostDetail />}/>
 
         </Route>
 

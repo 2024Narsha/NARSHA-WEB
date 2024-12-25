@@ -12,6 +12,7 @@
 }
 
 .alert-container {
+  position: fixed;
   min-width: 360px;
   height: 100vh;
   background-color: rgba(0,0,0,0.3);
@@ -21,41 +22,54 @@
 }
 
 .alert-box {
-  width: 30rem;
-  height: 18rem;
-  padding: 2rem;
+  width: 300px;
+  height: 180px;
+  padding: 52px 20px 20px 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-info{
+  width: 250px;
+  height: 35px;
+  text-align: center;
 }
 
 .alert-info h1 {
-  font-size: 1.6rem;
+  font-size: 16px;
   color: #444444;
   font-weight: 500;
+  margin:0;
 }
 
 .alert-info p {
-  font-size: 1.3rem;
+  font-size: 13px;
   color: #444444;
   font-weight: 300;
 }
 
 .check-buttons {
-  width:;
-  height:;
+  width: 260px;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .check-buttons button {
-  width: 120rem;
-  height: 40rem;
-  border-radius: 10rem;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
   background-color: white;
   border: 1px solid #1B3DEA;
   color: #1B3DEA
 }
 
-#cancell {
+#cancel {
   background-color: #1B3DEA;
   color: white;
 }

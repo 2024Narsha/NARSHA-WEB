@@ -59,7 +59,6 @@ const NoticeBar = () => {
           <PreviewList /> {/* 모집 중인 대회 */}
           <p />
           <ContestView /> {/* 정기 대회 */}
-          <p /><p /><p />
         </div>
       </div>
       </div>

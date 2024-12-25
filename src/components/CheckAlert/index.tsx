@@ -2,8 +2,8 @@ import './style.css'
 
 // CheckAlert 컴포넌트의 props 타입 정의
 interface CheckAlertProps {
-  onCancel: () => void;  // 취소 버튼 클릭 핸들러
-  onConfirm: () => void; // 확인 버튼 클릭 핸들러
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;  // 취소 버튼 클릭 핸들러
+  onConfirm: (e: React.MouseEvent<HTMLButtonElement>) => void; // 확인 버튼 클릭 핸들러
 }
 
 const CheckAlert = ({ onCancel, onConfirm }: CheckAlertProps) => {
