@@ -23,3 +23,8 @@
   height: 100%;
   padding: 167px 20px 0 20px;
 }
+
+.apply-content h1{
+  font-size: 20px;
+  color: #222222;
+}
