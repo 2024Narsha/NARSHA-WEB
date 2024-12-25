@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './SearchResults.css';
 import axios from 'axios';
-import TopBar from '../../components/TopBar';
 import SearchBox from '../../components/SearchBox';
+
 
 interface SearchResult {
   id: number;
@@ -25,24 +25,33 @@ const SearchResults = () => {
   const navigate = useNavigate()
 
   const fetchResults = async() => {
-    try{
-      if(keyword) {
+    try {
+      if (keyword) {
         const res = await axios.get(
           `${import.meta.env.VITE_SERVER_URL}/search/keyword/${keyword}`
         );
-        if(res?.data) {
+        if (res?.data) {
           setResults(res.data);
         }
       } 
-      else if(categories) {
-        const res = await axios.get(
-          `${import.meta.env.VITE_SERVER_URL}/search/category/${categories}`
-        );
-        if(res?.data) {
-          setResults(res.data);
+      else {
+        // URL에서 현재 경로와 쿼리 스트링 가져오기
+        const pathname = window.location.pathname;
+        const search = window.location.search;
+        
+        // path parameter에서 categoryId 추출
+        const categoryId = pathname.split('/').pop();
+        
+        if (categoryId && search) {
+          const res = await axios.get(
+            `${import.meta.env.VITE_SERVER_URL}/search/category/${categoryId}${search}`
+          );
+          if (res?.data) {
+            setResults(res.data);
+          }
         }
       }
-    }catch (error:any) {
+    } catch (error) {
       console.error(error);
     }
   };
