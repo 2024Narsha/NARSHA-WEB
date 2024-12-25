@@ -9,7 +9,9 @@ const TextSearch = () => {
   const handleSearch = () => {
     if (searchText.trim()) {
       navigate(`/search/keyword/${searchText.trim()}`);
-    }
+    }else{
+      alert('검색어를 입력해주세요')
+    };
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

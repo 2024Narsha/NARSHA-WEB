@@ -91,3 +91,23 @@
   text-align: left;
   width: 100%;
 }
+
+/* .categories-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.category-box {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  gap: 4px;
+}
+
+.category-delete {
+  cursor: pointer;
+} */

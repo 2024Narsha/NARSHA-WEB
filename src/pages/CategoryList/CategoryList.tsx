@@ -13,19 +13,19 @@ const CategorySearch = () => {
     <div className="Search">
       <Link to='/'><img src="/arrow.svg" alt="Back" className="search-icon-left" /></Link>
       <span>카테고리 검색</span>
-      <img src="/search.svg" alt="Search" className="search-icon-right" />
+      <Link to='/'><img src="/search.svg" alt="Search" className="search-icon-right" /></Link>
     </div>
   );
 };
 
 const CategoryList = () => {
-  const [categories, setCategories] = useState<[Category]>();
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); // 선택된 카테고리들을 배열로 저장
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<number[]>([]); // 선택된 카테고리들을 배열로 저장
 
   const navigate = useNavigate();
 
   // 카테고리 버튼 클릭 시 상태 업데이트
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = (category: number) => {
     if (selectedCategories.includes(category)) {
       setSelectedCategories(selectedCategories.filter((item) => item !== category));
     } else {
@@ -33,27 +33,21 @@ const CategoryList = () => {
     }
   };
 
-  const handleSearchClick = async() => {
+  const handleSearchClick = () => {
     if (selectedCategories.length === 0) {
       alert('카테고리를 하나 이상 선택해주세요');
-      return
+      return;
     }
-
-    try {
-    // 선택된 카테고리 ID를 쿼리 파라미터 형식으로 변환
-    const query = selectedCategories
-      .map((categoryId) => `categoryIds=${categoryId}`)
-      .join('&'); // "categoryIds=1&categoryIds=2&categoryIds=3"와 같은 형태로 변환
-
-    // `categoryId`는 고정된 값으로 경로에 포함될 수 있습니다.
-    const categoryId = 123; // 예시로 categoryId를 설정
-    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/search/category/${categoryId}?${query}`);
-
-    // 검색 결과 페이지로 네비게이션
-    navigate(`/search/category/${categoryId}?${query}`);
-    }catch(error:any){
-      console.error(error)
-    };
+  
+    // 첫 번째 카테고리 ID를 path parameter로 사용
+    const firstCategoryId = selectedCategories[0];
+    
+    // 나머지 카테고리들을 query parameter로 변환
+    const queryParams = selectedCategories
+      .map(id => `categoryIds=${id}`)
+      .join('&');
+  
+    navigate(`/search/category/${firstCategoryId}?${queryParams}`);
   };
 
   const getCategoryList = async() => {
@@ -82,8 +76,8 @@ const CategoryList = () => {
         {categories?.map((item:Category) => (
           <button
             key={item.categoryId}
-            className={`category-button ${selectedCategories.includes(item.categoryName) ? 'selected' : ''}`}
-            onClick={() => handleCategoryClick(item.categoryName)}
+            className={`category-button ${selectedCategories.includes(item.categoryId) ? 'selected' : ''}`}
+            onClick={() => handleCategoryClick(item.categoryId)}
           >
             {item.categoryName}
           </button>

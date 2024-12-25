@@ -4,7 +4,7 @@ import './style.css'
 import TextSearch from '../TextSearch';
 
 const SearchBox = () => {
-  const [name, setName] = useState<string>('없음');
+  const [names, setNames] = useState<string[]>([]);
 
   const onCategoryDelete = () => {
 
@@ -16,10 +16,14 @@ const SearchBox = () => {
       <TextSearch />
 
       <div className='categories-wrap'>
-        <CategoryButton 
-          name={name}
-          categoryDelete={onCategoryDelete}
-        />
+        {/* 각 카테고리를 CategoryButton으로 렌더링 */}
+        {names.map((name) => (
+          <CategoryButton 
+            key={name} 
+            name={name} 
+            categoryDelete={() => onCategoryDelete()} 
+          />
+        ))}
       </div>
     </div>
 

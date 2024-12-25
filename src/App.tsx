@@ -24,7 +24,7 @@ import StudentsPostDetail from "./pages/StudentsPostDetail";
 import LicenseWrite from "./pages/LicenseWrite";
 import ApplicatedBox from "./components/ApplicatedBox";
 import SearchResults from "./pages/SearchResults/SearchResults";
-import ApplicateList from "./pages/JoinedList";
+import JoinedList from "./pages/ApplicateList";
 
 
 const Wrapper = () => {
@@ -61,9 +61,9 @@ const App = () => {
           <Route path="/posts/:id" element={<PostDetail />}/>
 
           <Route path="/search/keyword/:keyword" element={<SearchResults />} />
-          <Route path="/search/categories/:categories" element={<SearchResults />} />
+        <Route path="/search/category/:categoryId" element={<SearchResults />} />
 
-          <Route path="/applicate-list" element={<ApplicateList />}/>
+          <Route path="/joined-list" element={<JoinedList />}/>
 
         </Route>
 
