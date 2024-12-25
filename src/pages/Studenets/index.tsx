@@ -5,6 +5,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import instance from "../../lids/axios/instance";
 import axios from 'axios'
+import WriteButton from '../../components/WriteButton'
+
+interface UserData {
+  idx: number;
+  userId: string;
+  role: string;
+}
 
 const Students = () => {
   const ACCESS_TOKEN =
@@ -15,6 +22,8 @@ const Students = () => {
   const [thumbnails, setThumbnails] = useState<string>('/bigLogo(blue).svg');
   const [option, setOption] = useState<boolean>(true); // true는 학생회 행사 페이지를 의미
 
+  const [userData, setUserData] = useState<UserData | null>(null);
+
   const navigate = useNavigate();
 
   const getMe = async() => {
@@ -22,6 +31,7 @@ const Students = () => {
       const res = await instance.get(`/users/me`);
       if(res){
         console.log(res)
+        setUserData(res.data.data)
       }
     }catch(error:any) {
       navigate("/login");
@@ -59,7 +69,13 @@ const Students = () => {
     getList();
   }, []);
 
+  const shouldShowButton = (
+    userData?.userId === 'admin' || 
+    userData?.role === 'admin'
+  );
+
   return (
+    <div className='write-button-wrap'>
     <div className='students-page-container'>
       <OptionBar
         title='학생회&방송부'
@@ -72,6 +88,12 @@ const Students = () => {
       <div className='students-content-wrap'>
         <StudentsPost src={thumbnails} />
       </div>
+    </div>
+
+      {/* 참가하기 버튼 (선생인 경우만 표시) */}
+      {shouldShowButton && (
+        <WriteButton path='학생회'/>
+        )}
     </div>
   )
 }

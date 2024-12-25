@@ -52,8 +52,8 @@ const LicenseWrite = () => {
     };
 
     try{
-      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/licenses`, formData);
-      if (res.data.data){
+      const res = await watodoAxios.post(`/licenses`, formData);
+      if (res.data){
         alert('자격증 정보가 성공적으로 등록되었습니다.');
         navigate('/license')
       }

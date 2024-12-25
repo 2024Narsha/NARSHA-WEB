@@ -1,0 +1,8 @@
+.go-to-write {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 100px;
+  right: 20px;
+}

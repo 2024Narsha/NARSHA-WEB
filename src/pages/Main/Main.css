@@ -68,3 +68,10 @@
   height: 110vh;
   background-color: #FCFCFC;
 }
+
+.write-button-wrap {
+  margin: auto;
+  max-width: 360px;
+  height: 100vh;
+  position:relative;
+}

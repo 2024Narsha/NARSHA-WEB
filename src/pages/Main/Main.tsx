@@ -5,6 +5,13 @@ import ContestView from '../../components/ContestView';
 import instance from "../../lids/axios/instance";
 import { useNavigate } from 'react-router-dom';
 import SearchBox from '../../components/SearchBox';
+import WriteButton from '../../components/WriteButton';
+
+interface UserData {
+  idx: number;
+  userId: string;
+  role: string;
+}
 
 const NoticeBar = () => {
   const notices = [
@@ -16,20 +23,6 @@ const NoticeBar = () => {
   const [currentNotice, setCurrentNotice] = useState(notices[0]);
   let noticeIndex = 0;
 
-  const navigate = useNavigate();
-
-  const getMe = async() => {
-    try{
-      const res = await instance.get(`/users/me`);
-      if(res){
-        console.log(res)
-      }
-    }catch(error:any) {
-      navigate("/login");
-      console.log(error)
-    };
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       noticeIndex = (noticeIndex + 1) % notices.length;
@@ -37,10 +30,6 @@ const NoticeBar = () => {
     }, 3000);
 
     return () => clearInterval(interval); // 컴포넌트 언마운트 시 interval 제거
-  }, []);
-
-  useEffect(() => {
-    getMe();
   }, []);
 
   return (
@@ -51,8 +40,35 @@ const NoticeBar = () => {
     );
   };
 
+
   const Main = () => {
+    const [userData, setUserData] = useState<UserData | null>(null);
+
+    const navigate = useNavigate();
+
+    const getMe = async() => {
+      try{
+        const res = await instance.get(`/users/me`);
+        if(res){
+          setUserData(res.data.data)
+        }
+      }catch(error:any) {
+        navigate("/login");
+        console.log(error)
+      };
+    };
+
+    useEffect(() => {
+      getMe();
+    }, []);
+
+    const shouldShowButton = (
+      userData?.userId === 'admin' || 
+      userData?.role === 'admin'
+    );
+
     return (
+      <div className='write-button-wrap'>
       <div className="centered-container">
         <SearchBox />
         <NoticeBar />
@@ -63,6 +79,12 @@ const NoticeBar = () => {
           <ContestView /> {/* 정기 대회 */}
         </div>
       </div>
+      </div>
+
+        {/* 참가하기 버튼 (선생인 경우만 표시) */}
+        {shouldShowButton && (
+          <WriteButton path='대회'/>
+          )}
       </div>
     );
   };

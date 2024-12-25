@@ -1,33 +1,120 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './volunteer.css';
 import OptionBar from '../../components/OptionBar';
 import VolunteerItem from '../../components/volunteerItem/Item';
+import WriteButton from '../../components/WriteButton';
+import instance from "../../lids/axios/instance";
+
+interface VolunteerData {
+  volunteerId: number;
+  title: string;
+  weekend: boolean;
+  afternoon: boolean;
+  description: string;
+}
+
+interface UserData {
+  idx: number;
+  userId: string;
+  role: string;
+}
 
 const Volunteer: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('전체');
+  const [optionState, setOptionState] = useState<boolean>(false); // false: 평일, true: 주말
+  const [volunteers, setVolunteers] = useState<VolunteerData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
+  const [userData, setUserData] = useState<UserData | null>(null);
+
+  const getMe = async() => {
+    try{
+      const res = await instance.get('users/me');
+      if(res.data){
+        setUserData(res.data.data)
+      }
+    }catch(error:any){
+      console.log(error)
+    };
+  };
+
+  const fetchVolunteers = async (weekend: boolean, afternoon: boolean | null) => {
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      let url = `${import.meta.env.VITE_SERVER_URL}/volunteers/search/weekend/${weekend}`;
+      if (afternoon !== null) {
+        url += `/afternoon/${afternoon}`;
+      }
+      
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('데이터를 불러오는데 실패했습니다.');
+      }
+      
+      const data = await response.json();
+      setVolunteers(data);
+    } catch (err) {
+      setError('데이터를 불러오는데 실패했습니다.');
+      setVolunteers([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // 평일/주말 변경 처리
+  const handleOptionChange = (option: string) => {
+    const newOptionState = option === '주말';
+    setOptionState(newOptionState);
+    
+    if (selectedCategory === '전체') {
+      fetchVolunteers(newOptionState, null);
+    } else {
+      fetchVolunteers(newOptionState, selectedCategory === '오후');
+    }
+  };
+
+  // 카테고리 변경 처리
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
+    
+    if (category === '전체') {
+      fetchVolunteers(optionState, null);
+    } else {
+      fetchVolunteers(optionState, category === '오후');
+    }
   };
 
-  const handleOptionChange = (option: string) => {
-    const newSchoolType = option === '평일';
-    // getLicenseItem(newSchoolType);
-  };
+  // 초기 데이터 로딩
+  useEffect(() => {
+    fetchVolunteers(false, null);
+  }, []);
+
+  const shouldShowButton = (
+    userData?.userId === 'admin' || 
+    userData?.role === 'admin'
+  );
+
+  useEffect(()=>{
+    getMe()
+  }, [])
 
   return (
+    <div className='write-button-wrap'>
+
     <div className="volunteer-container">
-      {/* OptionBar: 헤더 고정 */}
       <div className="option-bar-wrapper">
-        <OptionBar 
+        <OptionBar
           title="봉사활동 조회"
           loption="평일"
           roption="주말"
+          onOption={optionState}
           onOptionChange={handleOptionChange}
         />
       </div>
 
-      {/* 카테고리 버튼 고정 */}
       <div className="category-button-v-container">
         {['전체', '오전', '오후'].map((category) => (
           <button
@@ -42,21 +129,31 @@ const Volunteer: React.FC = () => {
         ))}
       </div>
 
-      {/* VolunteerItem 리스트 */}
       <div className="volunteer-items-list">
-        <VolunteerItem
-          title="급식도우미 추가모집"
-          previewContent={`배식 도우미, 이벤트 도우미 등을 모집합니다! 🙋🏻‍♀️ 급식 당번이 되면 어떤게 좋나요? 먼저 급식봉사를 한 이후에는 급식 우선권을 얻어 누구보다 빠르게 식사를 할 수 있습니다!`} //${selectedCategory}를 사용하면 카테고리의 이름을 바꿀 수 있음
-          posterUrl="https://example.com/poster.jpg"
-        />
-
-        <VolunteerItem
-          title="입학설명회 도우미"
-          previewContent={`교내탐방 도우미, 진로체험 도우미를 모집합니다. 입학설명회 진행 시 교내 인솔을 돕고, 시청각실에서부터 출발해 교내탐방을 안내합니다.`}
-        />
+        {isLoading ? (
+          <div className="loading-message">불러오는 중...</div>
+        ) : error ? (
+          <div className="error-message">{error}</div>
+        ) : volunteers.length === 0 ? (
+          <div className="no-data-message">봉사활동이 없습니다.</div>
+        ) : (
+          volunteers.map((volunteer) => (
+            <VolunteerItem
+              key={volunteer.volunteerId}
+              title={volunteer.title}
+              previewContent={volunteer.description}
+            />
+          ))
+        )}
       </div>
+    </div>
+
+      {/* 참가하기 버튼 (선생인 경우만 표시) */}
+      {shouldShowButton && (
+        <WriteButton path='봉사'/>
+        )}
     </div>
   );
 };
 
-export default Volunteer;
+export default Volunteer; 

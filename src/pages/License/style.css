@@ -32,3 +32,10 @@ body{
   padding: 167px 20px 85px 20px;
   background-color: #FCFCFC;
 }
+
+.write-button-wrap {
+  margin: auto;
+  max-width: 360px;
+  height: 100vh;
+  position:relative;
+}

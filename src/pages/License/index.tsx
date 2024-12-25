@@ -7,6 +7,7 @@ import './style.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import instance from "../../lids/axios/instance";
+import WriteButton from '../../components/WriteButton';
 
 interface License {
   licenseId: number;
@@ -21,6 +22,12 @@ interface License {
   };
 }
 
+interface UserData {
+  idx: number;
+  userId: string;
+  role: string;
+}
+
 const License = () => {
   const ACCESS_TOKEN =
     localStorage.getItem(
@@ -29,6 +36,8 @@ const License = () => {
   const [licenses, setLicenses] = useState<License[]>([]);
   const [selectedOption, setSelectedOption] = useState<boolean>(false);
 
+  const [userData, setUserData] = useState<UserData | null>(null);
+
   const navigate = useNavigate();
 
   const getMe = async() => {
@@ -36,6 +45,7 @@ const License = () => {
       const res = await instance.get(`/users/me`);
       if(res){
         console.log(res)
+        setUserData(res.data.data)
       }
     }catch(error:any) {
       navigate("/login");
@@ -72,7 +82,14 @@ const License = () => {
     getLicenseItem();
   },[selectedOption]);
 
+  const shouldShowButton = (
+    userData?.userId === 'admin' || 
+    userData?.role === 'admin'
+  );
+
   return (
+    <div className='write-button-wrap'>
+
     <div className='license-container'>
       <Header />
       <OptionBar 
@@ -95,6 +112,12 @@ const License = () => {
       </div>
 
       <Footer />
+
+        {/* 참가하기 버튼 (선생인 경우만 표시) */}
+        {shouldShowButton && (
+          <WriteButton path='자격증'/>
+          )}
+      </div>
     </div>
   )
 }
