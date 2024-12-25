@@ -10,14 +10,14 @@ const ContestWrite = () => {
   const fileRef = useRef<HTMLInputElement|null>(null);
   const imageRef = useRef<HTMLInputElement|null>(null);
 
-  const [image, setImage] = useState<File[]>([]);
-  const [imageUrl, setImageUrl] = useState<string[]>([])
+  const [imageUrl, setImageUrl] = useState<string[]>([''])
   const [title, setTitle] = useState('');
   const [reguler,setReguler] = useState<boolean>(false);
   const [inSchool, setInScholl] = useState<boolean>(true);
   const [area,setArea] = useState(1);
   const [deadline, setDeadlineState] = useState("");
   const [details, setDetails] = useState('');
+  const [fileUrl,setFileUrl] = useState('');
 
   const handleImageChange = async (e : React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files) {
@@ -94,10 +94,21 @@ const ContestWrite = () => {
     }
   }
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const file = event.target.files[0];
       setFiles(file);
+
+      const fileData = new FormData();
+      fileData.append("files", file);
+
+      try{
+        const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`,fileData)
+        console.log(res)
+        setFileUrl(res.data);
+      } catch(error:any){
+        console.log(error)
+      }
     }
   };
 
@@ -118,9 +129,9 @@ const ContestWrite = () => {
       inSchool,
       imageUrl,
       reguler,
-      files
+      fileUrl
     };
-
+    
     try{
       console.log(formData)
       const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/posts`, formData)
