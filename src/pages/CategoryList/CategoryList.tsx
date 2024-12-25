@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './CategoryList.css';
 
 const CategorySearch = () => {
   return (
     <div className="Search">
-      <img src="/arrow.svg" alt="Back" className="search-icon-left" />
+      <Link to='/'><img src="/arrow.svg" alt="Back" className="search-icon-left" /></Link>
       <span>카테고리 검색</span>
       <img src="/search.svg" alt="Search" className="search-icon-right" />
     </div>

@@ -12,7 +12,7 @@ const VolunteerItem: React.FC<VolunteerItemProps> = ({ posterUrl, title, preview
     <div className="volunteer-item-container">
       <div className="poster-container">
         {posterUrl ? (
-          <img src={posterUrl} alt="포스터" className="poster-image" />
+          <img src={'bongsa.svg'} className="poster-image" />
         ) : (
           <div className="default-poster"></div>
         )}

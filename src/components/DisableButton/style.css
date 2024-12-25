@@ -38,11 +38,3 @@
   font-weight: 400;
   border: none;
 }
-
-// 비활성화된 버튼 스타일
-.bottom-button.disabled {
-  /* 배경색을 회색으로 변경 */
-  background-color: #dddddd;
-  /* 마우스 커서를 not-allowed로 변경 */
-  cursor: not-allowed;
-}
