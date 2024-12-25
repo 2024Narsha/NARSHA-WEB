@@ -5,12 +5,13 @@ import "./index.css"
 import watodoAxios from '../../lids/axios/instance';
 
 const ContestWrite = () => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<File|null>(null);
 
   const fileRef = useRef<HTMLInputElement|null>(null);
   const imageRef = useRef<HTMLInputElement|null>(null);
 
   const [image, setImage] = useState<File[]>([]);
+  const [imageUrl, setImageUrl] = useState<string[]>([])
   const [title, setTitle] = useState('');
   const [reguler,setReguler] = useState<boolean>(false);
   const [inSchool, setInScholl] = useState<boolean>(true);
@@ -19,17 +20,42 @@ const ContestWrite = () => {
   const [details, setDetails] = useState('');
 
   const handleImageChange = async (e : React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const image = e.target.files;
+    if (e.target.files && e.target.files) {
+      const image = e.target.files[0];
       console.log(image)
+
+      const imageData = new FormData();
+      imageData.append("files", image);
+
       try{
-        const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`,image)
+        const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`,imageData)
         console.log(res)
-        setImage(prev=>[...prev, res.data]);
+        setImageUrl(res.data);
       } catch(error:any){
         console.log(error)
       }
     }
+    // if (e.target.files) {
+    //   const files = e.target.files; // 여러 파일을 선택할 수 있습니다.
+    //   const imageData = new FormData();
+    
+    //   // 여러 파일을 FormData에 추가
+    //   for (let i = 0; i < files.length; i++) {
+    //     imageData.append("files", files[i]); // 서버에서 받는 파라미터 이름인 "files"에 맞게 설정
+    //   }
+    
+    //   try {
+    //     const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`, imageData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     });
+    //     console.log(res);
+    //     setImage((prev) => [...prev, ...res.data]);
+    //   } catch (error:any) {
+    //     console.log(error.message); // 에러 메시지 확인
+    //   }
+    // }
   }
 
   const handleTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,16 +97,16 @@ const ContestWrite = () => {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const file = event.target.files[0];
-      setFiles(prev=>[...prev, file]);
+      setFiles(file);
     }
   };
 
   const deleteFile = (e: File) => {
-    setFiles(prev=>prev.filter(item=>(item.lastModified.toString()+item.name != e.lastModified.toString()+item.name)));
+    setFiles(prev=>prev);
   }
 
-  const deleteImage = (e:File) => {
-    setImage(prev=>prev.filter(item=>(item.lastModified.toString()+item.name != e.lastModified.toString()+item.name)))
+  const deleteImage = (e:string) => {
+    setImageUrl(prev=>prev.filter(item=>(item+item != e+item)))
   }
 
   const uploadContest = async () => {
@@ -90,8 +116,9 @@ const ContestWrite = () => {
       deadline,
       area,
       inSchool,
-      image,
-      reguler
+      imageUrl,
+      reguler,
+      files
     };
 
     try{
@@ -111,27 +138,27 @@ const ContestWrite = () => {
     <TopBar title="대회 글쓰기"/>
     <div className='centered-container'>
       <div className="container">
-        
-          <div title='이미지 삽입' className='add-image margin-left margin-top2' onClick={openImageSelector}>
+        <div className='image'>
+          <div title='이미지 삽입' className='add-image' onClick={openImageSelector}>
             <img src="/add_image.svg" alt="이미지 삽입 아이콘"  />
-            <input type="file" id="image" hidden onChange={handleImageChange} ref={imageRef}/>
+            <input type="file" id="image" hidden onChange={handleImageChange} ref={imageRef} multiple/>
           </div>
           <div className='imageWrap'>
           {
-              image.map((item)=>(
-                <div className='imageItem' key={`${item.name}-${item.lastModified}`}>
+              imageUrl.map((item)=>(
+                <div className='imageItem' key={`${item}`}>
                   <div>
-                    <p>{item.name}</p>
-                    <img src={item.name} alt="인터넷 오류"/>
+                    <p>{item}</p>
+                    <img src={item} alt="인터넷 오류"/>
                   </div>
                   <div onClick={()=>deleteImage(item)}>
                     <img src='/deleteFile.svg' alt=''/>
                   </div>
                 </div>
               ))
-            }
+          }
           </div>
-
+        </div>
         <div className="form">
 
           {/* 제목 입력 */}
@@ -208,17 +235,17 @@ const ContestWrite = () => {
 
           <div id='fileWrap'>
             {
-              files.map((item)=>(
-                <div className='fileItem' key={`${item.name}-${item.lastModified}`}>
+              files &&(
+                <div className='fileItem' key={`${files.name}-${files.lastModified}`}>
                   <div>
-                    <p>{item.name}</p>
-                    <p>{Math.floor(item.size / (1024))}MB</p>
+                    <p>{files.name}</p>
+                    <p>{Math.floor(files.size / (1024))}MB</p>
                   </div>
-                  <div onClick={()=>deleteFile(item)}>
+                  <div onClick={()=>deleteFile(files)}>
                     <img src='/deleteFile.svg' alt=''/>
                   </div>
                 </div>
-              ))
+              )
             }
           </div>
           <div id='spacer'></div>
