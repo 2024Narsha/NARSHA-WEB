@@ -3,6 +3,7 @@ import TopBar from '../../components/TopBar';
 import Button from './button';
 import "./index.css"
 import watodoAxios from '../../lids/axios/instance';
+import axios from 'axios';
 
 const ContestWrite = () => {
   const [files, setFiles] = useState<File|null>(null);
@@ -10,14 +11,14 @@ const ContestWrite = () => {
   const fileRef = useRef<HTMLInputElement|null>(null);
   const imageRef = useRef<HTMLInputElement|null>(null);
 
-  const [imageUrl, setImageUrl] = useState<string[]>([''])
+  const [thumbnails, setThumbnails] = useState<string[]>([])
   const [title, setTitle] = useState('');
-  const [reguler,setReguler] = useState<boolean>(false);
+  const [regular,setRegular] = useState<boolean>(false);
   const [inSchool, setInScholl] = useState<boolean>(true);
-  const [area,setArea] = useState(1);
-  const [deadline, setDeadlineState] = useState("");
+  const [categoryId,setCategoryId] = useState(1);
+  const [closedAt, setClosedAtState] = useState("");
   const [details, setDetails] = useState('');
-  const [fileUrl,setFileUrl] = useState('');
+  const [attachmentFileUrl,setAttachmentFileUrl] = useState('');
 
   const handleImageChange = async (e : React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files) {
@@ -30,32 +31,12 @@ const ContestWrite = () => {
       try{
         const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`,imageData)
         console.log(res)
-        setImageUrl(res.data);
+        setThumbnails(res.data);
       } catch(error:any){
         console.log(error)
+        console.log(error.response)
       }
     }
-    // if (e.target.files) {
-    //   const files = e.target.files; // 여러 파일을 선택할 수 있습니다.
-    //   const imageData = new FormData();
-    
-    //   // 여러 파일을 FormData에 추가
-    //   for (let i = 0; i < files.length; i++) {
-    //     imageData.append("files", files[i]); // 서버에서 받는 파라미터 이름인 "files"에 맞게 설정
-    //   }
-    
-    //   try {
-    //     const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`, imageData, {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     });
-    //     console.log(res);
-    //     setImage((prev) => [...prev, ...res.data]);
-    //   } catch (error:any) {
-    //     console.log(error.message); // 에러 메시지 확인
-    //   }
-    // }
   }
 
   const handleTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +44,7 @@ const ContestWrite = () => {
   }
 
   const handleReguler = (e:React.ChangeEvent<HTMLSelectElement>)=>{
-    setReguler(Boolean(e.target.value))
+    setRegular(Boolean(e.target.value))
   }
 
   const handleInSchool = (e:React.ChangeEvent<HTMLSelectElement>) => {
@@ -71,7 +52,7 @@ const ContestWrite = () => {
   }
 
   const handleArea = (e:React.ChangeEvent<HTMLSelectElement>) => {
-    setArea(parseInt(e.target.value, 10))
+    setCategoryId(parseInt(e.target.value, 10))
   }
 
   const handleDetails = (e:React.ChangeEvent<HTMLTextAreaElement>) => { 
@@ -80,7 +61,7 @@ const ContestWrite = () => {
   
   const handleDeadline = (e : React.ChangeEvent<HTMLInputElement>)=>{
     const [year, month, day] = e.target.value.split("-");
-    setDeadlineState(`${year}-${month}-${day}`)
+    setClosedAtState(`${year}-${month}-${day}`)
   }
   const openFileSelector = () => {
     if(fileRef.current) {
@@ -105,7 +86,7 @@ const ContestWrite = () => {
       try{
         const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/files/upload`,fileData)
         console.log(res)
-        setFileUrl(res.data);
+        setAttachmentFileUrl(res.data[0]);
       } catch(error:any){
         console.log(error)
       }
@@ -117,24 +98,24 @@ const ContestWrite = () => {
   }
 
   const deleteImage = (e:string) => {
-    setImageUrl(prev=>prev.filter(item=>(item+item != e+item)))
+    setThumbnails(prev=>prev.filter(item=>(item+item != e+item)))
   }
 
   const uploadContest = async () => {
     const formData = {
       title,
       details,
-      deadline,
-      area,
+      closedAt,
+      categoryId,
       inSchool,
-      imageUrl,
-      reguler,
-      fileUrl
+      thumbnails,
+      regular,
+      attachmentFileUrl
     };
     
     try{
       console.log(formData)
-      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/posts`, formData)
+      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/posts`, formData,)
       console.log("Response:", res.data);
     }catch(error:any){
       console.log(error)
@@ -156,11 +137,10 @@ const ContestWrite = () => {
           </div>
           <div className='imageWrap'>
           {
-              imageUrl.map((item)=>(
+              thumbnails.map((item)=>(
                 <div className='imageItem' key={`${item}`}>
                   <div>
-                    <p>{item}</p>
-                    <img src={item} alt="인터넷 오류"/>
+                    <img src={`${import.meta.env.VITE_SERVER_URL}/uploads/${item}`} alt="인터넷 오류"/>
                   </div>
                   <div onClick={()=>deleteImage(item)}>
                     <img src='/deleteFile.svg' alt=''/>
@@ -218,7 +198,7 @@ const ContestWrite = () => {
             id="deadline"
             className='margin border'
             type="date"
-            value={deadline}
+            value={closedAt}
             onChange={handleDeadline}
           />
           </div>

@@ -5,58 +5,38 @@ import './index.css';
 import watodoAxios from '../../lids/axios/instance';
 
 const VolunterWrite = () => {
-  const [files, setFiles] = useState<File[]>([]);
 
-  const fileRef = useRef<HTMLInputElement|null>(null);
-  
   const [title, setTitle] = useState('');
-  const [inSchool, setInScholl] = useState('평일');
-  const [time,setTime] = useState('');
-  const [details, setDetails] = useState('');
+  const [weekend, setWeekend] = useState<Boolean>(false);
+  const [afternoon,setAfternoon] = useState<Boolean>(true);
+  const [description, setDescription] = useState('');
 
   const handleTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   }
 
-  const handleInSchool = (e:React.ChangeEvent<HTMLSelectElement>) => {
-    setInScholl(e.target.value)
+  const handleWeekend = (e:React.ChangeEvent<HTMLSelectElement>) => {
+    setWeekend(Boolean(e.target.value))
   }
 
   const handleTime = (e:React.ChangeEvent<HTMLSelectElement>) => {
-    setTime(e.target.value)
+    setAfternoon(Boolean(e.target.value))
   }
 
   const handleDetails = (e:React.ChangeEvent<HTMLTextAreaElement>) => { 
-    setDetails(e.target.value)
-  }
-  const openFileSelector = () => {
-    if(fileRef.current) {
-      fileRef.current.click();
-    }
+    setDescription(e.target.value)
   }
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      setFiles(prev=>[...prev, file]);
-    }
-  };
-
-  const deleteFile = (e: File) => {
-    setFiles(prev=>prev.filter(item=>(item.lastModified.toString()+item.name != e.lastModified.toString()+item.name)));
-  }
-
-  const uploadContest = async () => {
+  const uploadVolunteer = async () => {
     const formData = {
       title,
-      details,
-      time,
-      inSchool,
-      files
+      weekend,
+      afternoon,
+      description
     };
 
     try{
-      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/volunteer`, formData)
+      const res = await watodoAxios.post(`${import.meta.env.VITE_SERVER_URL}/volunteers`, formData)
       console.log("Response:", res.data);
     }catch(error:any){
       console.log(error)
@@ -86,19 +66,19 @@ const VolunterWrite = () => {
 
           {/* 교내 or 교외 선택 */}
           <div className='form-group'>
-          <label htmlFor="location" className='margin-left'>교내 or 교외</label>
-          <select id="location" className='margin border' title="교내 or 교외 선택" onChange={handleInSchool}>
-            <option value="평일">평일</option>
-            <option value="주말">주말</option>
+          <label htmlFor="location" className='margin-left'>평일 ro 주말</label>
+          <select id="location" className='margin border' title="교내 or 교외 선택" onChange={handleWeekend}>
+            <option value="false">평일</option>
+            <option value="true">주말</option>
           </select>
           </div>
 
           <div className='form-group'>
           <label htmlFor="location" className='margin-left'>오전 or 오후</label>
           <select id="location" className='margin border' title="오전 오후 선택" onChange={handleTime}>
-            <option value='오전'>오전</option>
-            <option value='오후'>오후</option>
-            <option value='전체'>전체</option>
+            <option value='false'>오전</option>
+            <option value='true'>오후</option>
+            <option value='false'>전체</option>
           </select>
           </div>
 
@@ -108,40 +88,14 @@ const VolunterWrite = () => {
           <textarea
             id="content"
             className='margin textarea border'
-            placeholder="대회 내용을 입력해 주세요 &#13;&#10;&#13;&#10; 예시: 주최, 장소, 주제, 분야 등"
+            placeholder="대회 내용을 입력해 주세요 &#13;&#10;&#13;&#10;예시: 주최, 장소, 주제, 분야 등"
             rows={4}
             onChange={handleDetails}
           />
           </div>
 
-          {/* 첨부파일 */}
-          <div className="file-upload">
-            <div onClick={openFileSelector} id='fileSelectButton'>
-              <img src="/file.svg" alt="" />
-              <p>파일선택</p>
-            </div>
-            <input type="file" id="file" hidden onChange={handleFileChange} ref={fileRef}/>
-          </div>
-
-          <div id='fileWrap'>
-            {
-              files.map((item)=>(
-                <div className='fileItem'>
-                  <div>
-                    <p>{item.name}</p>
-                    <p>{Math.floor(item.size / (1024))}MB</p>
-                  </div>
-                  <div onClick={()=>deleteFile(item)}>
-                    <img src='/deleteFile.svg' alt=''/>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-          <div id='spacer'></div>
-
           {/* 게시 버튼 */}
-          <Button onClick={uploadContest}>게시</Button>
+          <Button onClick={uploadVolunteer}>게시</Button>
         </div>
       </div>
 
